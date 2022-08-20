@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { toTitle } from "../utils/generator";
 import Head from "next/head";
-import { SITE_NAME } from "../lib/constants";
+import { SITE_NAME, IMAGE_PATH } from "../lib/constants";
 
 export default function GameDetail({ game }) {
   return (
@@ -12,10 +12,10 @@ export default function GameDetail({ game }) {
           {toTitle(game.name)} | Play {toTitle(game.name)} on {SITE_NAME}
         </title>
       </Head>
-      <div className="flex flex-col md:flex-row bg-white rounded-[2rem] p-5 shadow-lg shadow-slate-900/10 border-4 border-slate-400/60">
+      <div className="flex flex-col rounded-[2rem] border-4 border-slate-400/60 bg-white p-5 shadow-lg shadow-slate-900/10 md:flex-row">
         <div className="block text-center">
           <Image
-            src={game.icon}
+            src={`${IMAGE_PATH}${game.name}.png`}
             alt={toTitle(game.name)}
             width={150}
             height={150}
@@ -24,13 +24,13 @@ export default function GameDetail({ game }) {
             layout="fixed"
           />
         </div>
-        <div className="text-center md:text-left md:px-5">
+        <div className="text-center md:px-5 md:text-left">
           <h1 className="py-2 text-2xl font-semibold text-slate-700">
             <span>{toTitle(game.name)}</span>
           </h1>
           <p className="capitalize">
             <Link href={`/category/${game.category.toLowerCase()}`}>
-              <a className="text-xs py-1 px-2 bg-slate-600/80 text-slate-100/60 rounded-md shadow-md shadow-slate-900/30">
+              <a className="rounded-md bg-slate-600/80 py-1 px-2 text-xs text-slate-100/60 shadow-md shadow-slate-900/30">
                 {game.category.toLowerCase()}
               </a>
             </Link>
@@ -43,7 +43,7 @@ export default function GameDetail({ game }) {
       <p className="py-5">
         <Link href={game.url}>
           <a
-            className="block md:w-96 mx-auto bg-orange-500 text-center p-3 text-lg font-semibold text-white rounded-full shadow-lg shadow-orange-400/40"
+            className="mx-auto block rounded-full bg-orange-500 p-3 text-center text-lg font-semibold text-white shadow-lg shadow-orange-400/40 md:w-96"
             title={`Play ${toTitle(game.name)} now`}
           >
             Play now

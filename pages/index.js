@@ -81,10 +81,20 @@ export default function Home({ games, categories }) {
 }
 
 export const getStaticProps = async () => {
-  const games = await getGames();
+  const _games = await getGames();
   // const newGames = await getGames("LATEST", 12);
   // const featuredGames = await getGames("FEATURED_GAMES");
   const categories = await getCategories();
+  let games = [];
+  _games.map((item) => {
+    games.push({
+      id: item.id,
+      name: item.name,
+      category: item.category,
+      time: item.time,
+      //icon: item.icon,
+    });
+  });
 
   return {
     props: {

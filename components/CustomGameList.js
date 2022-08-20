@@ -1,17 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import { toSlug, toTitle } from "../utils/generator";
+import { IMAGE_PATH } from "../lib/constants";
 
 export default function CustomGameList({ games }) {
   const gamesList = games.map((game) => (
     <li
       key={game.id}
-      className="hover:scale-125 transition ease-in-out duration-500"
+      className="transition duration-500 ease-in-out hover:scale-125"
     >
       <Link href={`/game/${toSlug(game.name)}`}>
-        <a className="block rounded-xl overflow-hidden shadow-md shadow-slate-900/30 bg-loading bg-center bg-no-repeat">
+        <a className="block overflow-hidden rounded-xl bg-loading bg-center bg-no-repeat shadow-md shadow-slate-900/30">
           <Image
-            src={game.icon}
+            src={`${IMAGE_PATH}${game.name}.png`}
             alt={toTitle(game.name)}
             height={200}
             width={200}
@@ -20,7 +21,7 @@ export default function CustomGameList({ games }) {
           />
         </a>
       </Link>
-      <h3 className="my-1 text-xs text-center leading-tight">
+      <h3 className="my-1 text-center text-xs leading-tight">
         {toTitle(game.name)}
       </h3>
     </li>

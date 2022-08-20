@@ -37,13 +37,21 @@ export default function AllGames({ games, categories }) {
 }
 
 export const getStaticProps = async () => {
-  const games = await getGames();
+  const _games = await getGames();
   const categories = await getCategories();
+  let games = [];
+  _games.map((item) => {
+    games.push({
+      id: item.id,
+      name: item.name,
+      //icon: item.icon,
+      time: item.time,
+    });
+  });
 
   return {
     props: {
       games,
-
       categories,
     },
     // revalidate: 60,

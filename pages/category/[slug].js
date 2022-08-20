@@ -32,9 +32,18 @@ export default function GamesListByCategory({ games, categories }) {
 }
 
 export async function getStaticProps(context) {
-  const games = await getGamesByCategory(`${context.params.slug}`);
+  const _games = await getGamesByCategory(`${context.params.slug}`);
   const categories = await getCategories();
-
+  let games = [];
+  _games.map((item) => {
+    games.push({
+      id: item.id,
+      name: item.name,
+      category: item.category,
+      time: item.time,
+      //icon: item.icon,
+    });
+  });
   return {
     props: {
       games,

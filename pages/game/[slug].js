@@ -12,7 +12,7 @@ export default function Games({
   categories,
   leftGames,
   rightGames,
-  bottomGamesX44,
+  bottomGames,
 }) {
   // console.log(games);
   //const router = useRouter();
@@ -25,26 +25,26 @@ export default function Games({
           <title>{`Play ${game} on ${SITE_NAME}`}</title>
         </Head>
         <div className="relative z-30 grow p-3 md:px-6 xl:p-8">
-          <div className="grid gap-3 xl:grid-cols-12 xl:grid-rows-5 xl:gap-6">
-            <div className="xl:col-span-8 xl:col-start-3 xl:row-span-3 xl:row-start-1">
+          <div className="grid gap-3 xl:grid-cols-12 xl:grid-rows-4 xl:gap-6">
+            <div className="xl:col-span-8 xl:col-start-3 xl:row-span-2 xl:row-start-1">
               <GameDetail game={game} />
             </div>
             <h3 className="px-2 text-lg font-semibold xl:sr-only">
               You may also like
             </h3>
             <div className="xl:col-span-2 xl:col-start-1 xl:row-span-5 xl:row-start-1 ">
-              <ul className="grid grid-cols-5 gap-3 md:grid-cols-10 xl:grid-cols-2 xl:gap-6">
+              <ul className="grid grid-cols-4 gap-3 md:grid-cols-10 xl:grid-cols-2 xl:gap-6">
                 <CustomGameList games={leftGames} />
               </ul>
             </div>
             <div className="xl:col-span-2 xl:col-start-11 xl:row-span-5 xl:row-start-1">
-              <ul className="grid grid-cols-5 gap-3 md:grid-cols-10 xl:grid-cols-2 xl:gap-6">
+              <ul className="grid grid-cols-4 gap-3 md:grid-cols-10 xl:grid-cols-2 xl:gap-6">
                 <CustomGameList games={rightGames} />
               </ul>
             </div>
-            <div className="xl:col-span-8 xl:col-start-3 xl:row-span-2 xl:row-start-4">
-              <ul className="grid grid-cols-5 gap-3 md:grid-cols-10 xl:grid-cols-8 xl:gap-6">
-                <CustomGameList games={bottomGamesX44} />
+            <div className="xl:col-span-8 xl:col-start-3 xl:row-span-2 xl:row-start-3">
+              <ul className="grid grid-cols-4 gap-3 md:grid-cols-10 xl:grid-cols-8 xl:gap-6">
+                <CustomGameList games={bottomGames} />
               </ul>
             </div>
           </div>
@@ -55,28 +55,35 @@ export default function Games({
 }
 
 export async function getStaticProps(context) {
-  let games = await getGames();
+  const _games = await getGames();
   const categories = await getCategories();
-  let game = games.filter(
+  let game = _games.filter(
     (game) => toSlug(game.name) == `${context.params.slug}`
   );
   // console.log(game);
-  const currentGameIndex = games.findIndex(
-    (g) => toSlug(g.name) == `${context.params.slug}`
+  const _relatedGames = _games.filter(
+    (g) => toSlug(g.name) !== `${context.params.slug}`
   );
   // console.log(currentGameIndex);
-  games.splice(currentGameIndex, 1);
-  games.sort(function () {
+  let relatedGames = [];
+  _relatedGames.map((item) => {
+    relatedGames.push({
+      id: item.id,
+      name: item.name,
+    });
+  });
+  relatedGames.sort(function () {
     return 0.5 - Math.random();
   });
+
   return {
     props: {
       game: game[0],
       categories,
-      rightGames: games.slice(0, 10),
-      leftGames: games.slice(11, 21),
-      bottomGamesX44: games.slice(22, 38),
-      games,
+      rightGames: relatedGames.slice(0, 8),
+      leftGames: relatedGames.slice(8, 16),
+      bottomGames: relatedGames.slice(16, 32),
+      //games: relatedGames,
     },
     // revalidate: 60,
   };
