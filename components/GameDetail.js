@@ -44,9 +44,9 @@ export default function GameDetail({ game }) {
         <Link href={game.url}>
           <a
             className="mx-auto block rounded-full bg-orange-500 p-3 text-center text-lg font-semibold text-white shadow-lg shadow-orange-400/40 md:w-96"
-            title={`Play ${toTitle(game.name)} now`}
+            title={`Play ${toTitle(game.name)} Now`}
           >
-            Play now
+            Play Now
           </a>
         </Link>
       </p>
