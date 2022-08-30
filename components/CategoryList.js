@@ -1,10 +1,10 @@
 import Link from "next/link";
 export default function CategoryList({ title, categories, icon }) {
   const categoryList = categories.map((category, index) => (
-    <li key={index} className="capitalize mx-1 xl:mx-2 mb-2">
+    <li key={index} className="mx-1 mb-2 capitalize xl:mx-2">
       <Link href={`/category/${category}`}>
-        <a className="block hover:scale-110 transition ease-in-out duration-300 text-sm py-1 md:py-2 px-2 md:px-3 bg-slate-600/80 text-slate-100/60 rounded-full shadow-md shadow-slate-900/30">
-          {category}
+        <a className="block rounded-full bg-slate-600/80 py-1 px-2 text-sm text-slate-100/60 shadow-md shadow-slate-900/30 transition duration-300 ease-in-out hover:scale-110 md:py-2 md:px-3">
+          {category.toLowerCase() === "io" ? "IO" : category}
         </a>
       </Link>
     </li>
@@ -13,13 +13,13 @@ export default function CategoryList({ title, categories, icon }) {
     if (title === undefined) {
       return (
         <>
-          <ul className="p-4 flex space-x-3">{categoryList}</ul>
+          <ul className="flex space-x-3 p-4">{categoryList}</ul>
         </>
       );
     } else {
       return (
         <>
-          <h2 className="flex items-center px-3 xl:px-8 py-2 xl:pb-1 pb-0 md:text-sm xl:text-xl font-semibold text-slate-600 space-x-2">
+          <h2 className="flex items-center space-x-2 px-3 py-2 pb-0 font-semibold text-slate-600 md:text-sm xl:px-8 xl:pb-1 xl:text-xl">
             {icon}
             <span>{title}</span>
           </h2>
