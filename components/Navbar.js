@@ -52,7 +52,7 @@ export default function Navbar({ list, isOpen }) {
                 `/all` == router.pathname
                   ? `border-slate-50/80 bg-slate-50/20 md:bg-slate-50/10 md:shadow-lg`
                   : `border-slate-50/20 bg-slate-50/10 md:border-slate-50/0 md:shadow-none`
-              } m-1 rounded-xl border-2 transition duration-500 ease-in-out hover:bg-slate-50/10 md:bg-slate-50/0`}
+              } m-1 rounded-xl border-2 md:bg-slate-50/0 xl:transition xl:duration-500 xl:ease-in-out xl:hover:bg-slate-50/10`}
             >
               <Link href={`/all`}>
                 <a
@@ -72,7 +72,7 @@ export default function Navbar({ list, isOpen }) {
                   category == current.slug
                     ? `border-slate-50/80 bg-slate-50/20 md:bg-slate-50/10 md:shadow-lg`
                     : `border-slate-50/20 bg-slate-50/10 md:border-slate-50/0 md:shadow-none`
-                } m-1 rounded-xl border-2 transition duration-500 ease-in-out hover:bg-slate-50/10 md:bg-slate-50/0`}
+                } m-1 rounded-xl border-2 md:bg-slate-50/0 xl:transition xl:duration-500 xl:ease-in-out xl:hover:bg-slate-50/10`}
                 key={category}
               >
                 <Link href={`/category/${category.replace(/ /, "-")}`}>

@@ -8,7 +8,7 @@ const GameListItem = ({ games, className }) => {
   return games.map((game) => (
     <li
       key={game.id}
-      className={`transition duration-500 ease-in-out xl:hover:scale-125 ${className}`}
+      className={`xl:transition xl:duration-500 xl:ease-in-out xl:hover:scale-125 ${className}`}
     >
       <Link href={`/game/${toSlug(game.name)}`}>
         <a

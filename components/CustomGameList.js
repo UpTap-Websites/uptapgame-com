@@ -7,7 +7,7 @@ export default function CustomGameList({ games }) {
   const gamesList = games.map((game) => (
     <li
       key={game.id}
-      className="transition duration-500 ease-in-out hover:scale-125"
+      className="xl:transition xl:duration-500 xl:ease-in-out xl:hover:scale-125"
     >
       <Link href={`/game/${toSlug(game.name)}`}>
         <a className="block overflow-hidden rounded-xl bg-loading bg-center bg-no-repeat shadow-md shadow-slate-900/30">
