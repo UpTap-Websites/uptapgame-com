@@ -33,9 +33,10 @@ export default function Banner({
         data-full-width-responsive={responsive ? responsive : `true`}
         data-layout={layout}
         data-ad-layout-key={layoutKey}
-        {...(`${process.env.NODE_ENV}` === `development`
-          ? { "data-adtest": "on" }
-          : null)}
+        // {...(`${process.env.NODE_ENV}` === `development`
+        //   ? { "data-adtest": "on" }
+        //   : null)}
+        data-adtest="on"
       ></ins>
     </div>
   );
