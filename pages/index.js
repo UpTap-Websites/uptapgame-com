@@ -1,12 +1,13 @@
 import Head from "next/head";
 import { categoryIcon } from "../components/Icons";
 import Layout from "../components/Layout";
-import { SITE_META } from "../lib/constants";
+import { SITE_META, ADS_SLOTS_ID } from "../lib/constants";
 import {
   getGames,
   getCategories,
   // getGamesByCategory
 } from "../lib/api";
+import Banner from "../components/Banner";
 // import GameList from "../components/GameList";
 import CategoryList from "../components/CategoryList";
 import Link from "next/link";
@@ -43,8 +44,9 @@ export default function Home({ games, categories }) {
         <div className="relative z-30 grow md:px-4">
           <div className="flex flex-col xl:flex-row xl:flex-wrap">
             {categories
+              .slice()
               .sort((a, b) => (getGameTotal(a) < getGameTotal(b) ? 1 : -1))
-              .map((category) => {
+              .map((category, index) => {
                 let categoryGames = games.filter(
                   (game) => game.category.toLowerCase() == category
                 );
@@ -69,6 +71,22 @@ export default function Home({ games, categories }) {
                     <ul className="grid grid-cols-3 gap-4 px-8 py-4">
                       <GameListItem games={categoryGames.slice(0, 6)} />
                     </ul>
+                    {index == 0 || index == 2 ? (
+                      <>
+                        <Banner
+                          responsive={`false`}
+                          style={{
+                            display: `block`,
+                            width: `300px`,
+                            backgroundColor: `#00000010`,
+                            margin: `0 auto`,
+                          }}
+                          format={[`rectangle`]}
+                          key={Math.random()}
+                          // slot={ADS_SLOTS_ID.home}
+                        />
+                      </>
+                    ) : null}
                   </div>
                 );
               })}
@@ -76,7 +94,7 @@ export default function Home({ games, categories }) {
           <CategoryList
             icon={categoryIcon()}
             title="Categories"
-            categories={categories}
+            categories={categories.slice()}
           />
         </div>
       </Layout>
