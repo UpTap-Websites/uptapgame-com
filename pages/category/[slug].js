@@ -35,7 +35,9 @@ export default function GamesListByCategory({ games, categories }) {
 }
 
 export async function getStaticProps(context) {
-  const _games = await getGamesByCategory(`${context.params.slug}`);
+  const _games = await getGamesByCategory(
+    `${context.params.slug.replace(/-/, " ")}`
+  );
   const categories = await getCategories();
   let games = [];
   _games.map((item) => {
