@@ -60,7 +60,7 @@ export const getStaticPaths = async () => {
   const categories = await getCategories();
   const paths = categories.map((category) => ({
     params: {
-      slug: category,
+      slug: category.replace(/ /, "-"),
     },
   }));
   return {
