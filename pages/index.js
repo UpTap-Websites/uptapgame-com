@@ -83,7 +83,7 @@ export default function Home({ games, categories }) {
                           }}
                           format={[`rectangle`]}
                           key={Math.random()}
-                          // slot={ADS_SLOTS_ID.home}
+                          slot={ADS_SLOTS_ID.home}
                         />
                       </>
                     ) : null}
