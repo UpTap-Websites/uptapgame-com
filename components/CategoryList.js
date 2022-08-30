@@ -23,9 +23,7 @@ export default function CategoryList({ title, categories, icon }) {
             {icon}
             <span>{title}</span>
           </h2>
-          <ul className="flex flex-wrap px-1 py-2 xl:py-4 xl:px-6">
-            {categoryList}
-          </ul>
+          <ul className="m-4 flex flex-wrap xl:my-4 xl:mx-6">{categoryList}</ul>
         </>
       );
     }
