@@ -2,8 +2,12 @@ import Head from "next/head";
 import { categoryIcon } from "../components/Icons";
 import Layout from "../components/Layout";
 import { SITE_META } from "../lib/constants";
-import { getGames, getCategories, getGamesByCategory } from "../lib/api";
-import GameList from "../components/GameList";
+import {
+  getGames,
+  getCategories,
+  // getGamesByCategory
+} from "../lib/api";
+// import GameList from "../components/GameList";
 import CategoryList from "../components/CategoryList";
 import Link from "next/link";
 import GameListItem from "../components/GameListItem";
@@ -48,7 +52,7 @@ export default function Home({ games, categories }) {
                   <div className="xl:basis-1/4" key={category}>
                     <div className="flex flex-row items-center justify-between p-3 text-sm font-semibold xl:px-8 xl:pb-1">
                       <h2 className="text-lg capitalize text-slate-600 xl:text-xl">
-                        {category} Games
+                        {category.toLowerCase() == "io" ? "IO" : category} Games
                         <span className="ml-2 rounded-md bg-slate-200 p-1 text-sm font-normal">
                           {categoryGames.length}
                         </span>

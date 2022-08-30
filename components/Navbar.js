@@ -66,7 +66,7 @@ export default function Navbar({ list, isOpen }) {
                 </a>
               </Link>
             </li>
-            {list.map((category) => (
+            {list.sort().map((category) => (
               <li
                 className={`${
                   category == current.slug
@@ -83,7 +83,7 @@ export default function Navbar({ list, isOpen }) {
                         : `opacity-50`
                     } block p-2 text-white`}
                   >
-                    {category}
+                    {category.toLowerCase() == "io" ? "IO" : category}
                   </a>
                 </Link>
               </li>

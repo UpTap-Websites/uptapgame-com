@@ -31,11 +31,11 @@ export function getCount(level) {
   let featured = 3;
   if (level !== undefined) {
     if (level == "latest") {
-      return getRange(1, 5, latest) + `k`;
+      return getRange(10, 50, latest) + `k`;
     } else if (level == "featured") {
-      return getRange(11, 20, featured) + `k`;
+      return getRange(110, 200, featured) + `k`;
     }
   } else {
-    return getRange(6, 10, normal) + `k`;
+    return getRange(60, 100, normal) + `k`;
   }
 }

@@ -6,8 +6,12 @@ import { getGames, getCategories } from "../lib/api";
 import CategoryList from "../components/CategoryList";
 import ScrollGameList from "../components/ScrollGameList";
 
-export default function AllGames({ games, categories }) {
-  // console.log(games);
+export default function AllGames({
+  games,
+  categories,
+  // _games
+}) {
+  // console.log(`games`, _games);
   // console.log(categories);
   // const gameList = games.map((game) => <li key={game.id}>{game.name}</li>);
   return (
@@ -53,6 +57,7 @@ export const getStaticProps = async () => {
     props: {
       games,
       categories,
+      // _games,
     },
     // revalidate: 60,
   };
