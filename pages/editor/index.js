@@ -3,7 +3,7 @@ import Head from "next/head";
 import useCurrentData from "../../data/CurrentData";
 import dayjs from "dayjs";
 import { getStars, toSlug, toTitle } from "../../utils/generator";
-import { GAME_PATH, LANDSCAPE_GAMES } from "../../lib/constants";
+import { GAME_PATH, LANDSCAPE_GAMES, RE_CATEGORY } from "../../lib/constants";
 import Image from "next/image";
 
 export default function Editor({ data }) {
@@ -16,11 +16,11 @@ export default function Editor({ data }) {
     let categories = [];
 
     function getCategoryID(category) {
-      switch (category) {
-        case `action`:
+      let cat = category.toLowerCase().replace(/ /, "-");
+      switch (cat) {
+        case `arcade`:
           return 1;
         case `puzzle`:
-          return 2;
         case `puzzles`:
           return 2;
         case `casual`:
@@ -31,27 +31,51 @@ export default function Editor({ data }) {
           return 5;
         case `strategy`:
           return 6;
-        case `defense`:
+        case `match-3`:
           return 7;
         case `racing`:
           return 8;
         case `shooting`:
           return 9;
+        case `adventure`:
+          return 11;
+        case `girl`:
+          return 12;
+        case `io`:
+          return 13;
 
         default:
           break;
       }
     }
 
-    data.gamelist.map((item) => {
-      let game = {};
+    let tmpData = data.gamelist.slice();
+
+    tmpData.find(
+      (item) => item.name.toLowerCase() == `sharkiscoming`
+    ).name = `SharkIsComing`;
+
+    RE_CATEGORY.map((cat) => {
+      for (const [key, value] of Object.entries(cat)) {
+        tmpData.map((item) => {
+          value.includes(item.name) ? (item.category = key) : null;
+        });
+      }
+    });
+
+    tmpData.map((item) => {
+      let game = {}; // 临时对象
       game.title = toTitle(
-        item.name == `SharkisComing` ? `SharkIsComing` : item.name
+        // item.name == `SharkisComing` ? `SharkIsComing` : item.name
+        item.name
       );
       game.slug = toSlug(
-        item.name == `SharkisComing` ? `SharkIsComing` : item.name
+        // item.name == `SharkisComing` ? `SharkIsComing` : item.name
+        item.name
       );
-      game.gid = item.name == `SharkisComing` ? `SharkIsComing` : item.name;
+      // game.gid = item.name == `SharkisComing` ? `SharkIsComing` : item.name; // 修复源id命名错误
+      game.gid = item.name; // 修复源id命名错误
+
       // game.category = {
       //   name:
       //     item.category.trim().toLowerCase() == `puzzles`
@@ -65,40 +89,53 @@ export default function Editor({ data }) {
       //       ? `puzzle`
       //       : item.category.trim().toLowerCase(),
       // };
+
       game.category = getCategoryID(item.category.trim().toLowerCase());
-      game.description = item.description.trim();
-      game.creation_date = new Date(item.time);
+
       game.game_url = `${GAME_PATH}${
         item.name == `SharkisComing` ? `SharkIsComing` : item.name
       }`;
       game.icon_url = `https://cdn.iwantalipstick.com/gameicon2/png/${
         item.name == `SharkisComing` ? `SharkIsComing` : item.name
       }.png`;
-      game.rating = getStars();
+      game.description = item.description.trim();
       game.oritention = LANDSCAPE_GAMES.includes(item.name.trim())
         ? `landscape`
         : `portrait`;
       // game.tags = null;
       // game.status = `draft`;
-
+      game.rating = getStars() - 0;
+      game.creation_date = new Date(item.time).toISOString();
       games.push(game);
-      categories.push(
-        item.category.trim().toLowerCase() == `puzzles`
-          ? `Puzzle`
-          : item.category
-              .trim()
-              .toLowerCase()
-              .replace(/^\S/, (s) => s.toUpperCase())
-      );
+
+      // categories.push(
+      //   item.category.trim().toLowerCase() == `puzzles`
+      //     ? `Puzzle`
+      //     : item.category
+      //         .trim()
+      //         .toLowerCase()
+      //         .replace(/^\S/, (s) => s.toUpperCase())
+      // );
     });
 
     categories = [...new Set(categories)];
 
+    // games.forEach((game) => {
+    //   let cat = game.category;
+    //   console.log(`GAME:`, game.title, `cat`, cat, `type: `, typeof cat);
+
+    //   game.category = getCategoryID(cat.toLowerCase());
+    // });
+
+    console.log(`games`, games);
+
     return (
       <>
-        <div className="my-4">Original Data: {data.gamelist.length}</div>
-        <div className="flex h-80 flex-row gap-6">
-          <div className="basis-1/2 overflow-auto border-4 border-slate-100">
+        <div className="my-4">
+          源数据 / Original Data: {data.gamelist.length}
+        </div>
+        <div className="relative grid grid-cols-2 gap-6">
+          <div className="overflow-auto border-4 border-slate-100">
             <table className="w-full table-auto text-xs leading-8">
               <thead>
                 <tr>
@@ -150,14 +187,17 @@ export default function Editor({ data }) {
               </tbody>
             </table>
           </div>
-          <textarea
-            className="basis-1/2 select-all border-4 border-slate-100 bg-slate-50 p-6 text-xs"
-            name=""
-            id=""
-            cols="30"
-            rows="10"
-            value={JSON.stringify(games, null, 4)}
-          ></textarea>
+          <div className="">
+            <h2>Output</h2>
+            <textarea
+              className="w-full select-all border-4 border-slate-100 bg-slate-50 p-6 text-xs"
+              name=""
+              id=""
+              cols="30"
+              rows="30"
+              value={JSON.stringify(games, null, 4)}
+            ></textarea>
+          </div>
         </div>
       </>
     );
