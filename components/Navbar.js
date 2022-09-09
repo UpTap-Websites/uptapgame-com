@@ -43,8 +43,7 @@ export default function Navbar({ list, isOpen }) {
         <div
           className={`${
             !isMenuOpen ? `hidden md:block` : `block`
-          } relative z-30 block p-3 md:z-10
-          `}
+          } relative z-30 block p-3 md:z-10`}
         >
           <ul className="flex flex-wrap rounded-3xl bg-slate-800 p-2 capitalize shadow-lg shadow-slate-900/20 md:ml-3 md:mt-2 md:pl-20">
             <li
