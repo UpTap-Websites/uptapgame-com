@@ -8,6 +8,11 @@ module.exports = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  experimental: {
+    images: {
+      unoptimized: true,
+    },
+  },
   swcMinify: true,
   reactStrictMode: true,
 };
