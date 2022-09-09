@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { gameIcon, categoryIcon } from "../components/Icons";
 import Layout from "../components/Layout";
-import { SITE_NAME } from "../lib/constants";
+import { SITE_NAME, ADSENSE_ID } from "../lib/constants";
 import { getGames, getCategories } from "../lib/api";
 import CategoryList from "../components/CategoryList";
 import ScrollGameList from "../components/ScrollGameList";
@@ -19,6 +19,11 @@ export default function AllGames({
       <Layout list={categories}>
         <Head>
           <title>{`All Games | ${SITE_NAME}`}</title>
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+            crossOrigin="anonymous"
+          ></script>
         </Head>
         <div className="relative z-30 grow md:px-4">
           <ScrollGameList

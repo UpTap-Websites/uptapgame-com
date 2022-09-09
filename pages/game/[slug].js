@@ -5,7 +5,7 @@ import { toSlug } from "../../utils/generator";
 import GameDetail from "../../components/GameDetail";
 import CustomGameList from "../../components/CustomGameList";
 import Head from "next/head";
-import { SITE_NAME } from "../../lib/constants";
+import { SITE_NAME, ADSENSE_ID } from "../../lib/constants";
 
 export default function Games({
   game,
@@ -23,6 +23,11 @@ export default function Games({
       <Layout list={categories}>
         <Head>
           <title>{`Play ${game} on ${SITE_NAME}`}</title>
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+            crossOrigin="anonymous"
+          ></script>
         </Head>
         <div className="relative z-30 grow p-3 md:px-6 xl:p-8">
           <div className="grid gap-3 xl:grid-cols-12 xl:grid-rows-4 xl:gap-6">

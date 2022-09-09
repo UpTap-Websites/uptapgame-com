@@ -3,7 +3,7 @@ import GameList from "../../components/GameList";
 import { useRouter } from "next/router";
 import { getGamesByCategory, getCategories } from "../../lib/api";
 import Head from "next/head";
-import { SITE_NAME } from "../../lib/constants";
+import { SITE_NAME, ADSENSE_ID } from "../../lib/constants";
 
 export default function GamesListByCategory({ games, categories }) {
   // console.log(games);
@@ -21,6 +21,11 @@ export default function GamesListByCategory({ games, categories }) {
       <Layout list={categories} isOpen>
         <Head>
           <title>{`${categoryName} Games | ${SITE_NAME}`}</title>
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+            crossOrigin="anonymous"
+          ></script>
         </Head>
         <div className="relative z-30 grow md:px-4">
           <h1 className="px-4 pt-2 pb-2 text-center text-2xl font-semibold capitalize text-slate-900/80">

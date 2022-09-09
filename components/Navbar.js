@@ -66,28 +66,31 @@ export default function Navbar({ list, isOpen }) {
                 </a>
               </Link>
             </li>
-            {list.sort().map((category) => (
-              <li
-                className={`${
-                  category == current.slug
-                    ? `border-slate-50/80 bg-slate-50/20 md:bg-slate-50/10 md:shadow-lg`
-                    : `border-slate-50/20 bg-slate-50/10 md:border-slate-50/0 md:shadow-none`
-                } m-1 rounded-xl border-2 md:bg-slate-50/0 xl:transition xl:duration-500 xl:ease-in-out xl:hover:bg-slate-50/10`}
-                key={category}
-              >
-                <Link href={`/category/${category.replace(/ /, "-")}`}>
-                  <a
-                    className={`${
-                      category == current.slug
-                        ? `bg-slate-50/10 opacity-80`
-                        : `opacity-50`
-                    } block p-2 text-white`}
-                  >
-                    {category.toLowerCase() == "io" ? "IO" : category}
-                  </a>
-                </Link>
-              </li>
-            ))}
+            {list
+              .slice()
+              .sort()
+              .map((category) => (
+                <li
+                  className={`${
+                    category == current.slug
+                      ? `border-slate-50/80 bg-slate-50/20 md:bg-slate-50/10 md:shadow-lg`
+                      : `border-slate-50/20 bg-slate-50/10 md:border-slate-50/0 md:shadow-none`
+                  } m-1 rounded-xl border-2 md:bg-slate-50/0 xl:transition xl:duration-500 xl:ease-in-out xl:hover:bg-slate-50/10`}
+                  key={category}
+                >
+                  <Link href={`/category/${category.replace(/ /, "-")}`}>
+                    <a
+                      className={`${
+                        category == current.slug
+                          ? `bg-slate-50/10 opacity-80`
+                          : `opacity-50`
+                      } block p-2 text-white`}
+                    >
+                      {category.toLowerCase() == "io" ? "IO" : category}
+                    </a>
+                  </Link>
+                </li>
+              ))}
           </ul>
         </div>
       </div>

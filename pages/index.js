@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { categoryIcon } from "../components/Icons";
 import Layout from "../components/Layout";
-import { SITE_META, ADS_SLOTS_ID } from "../lib/constants";
+import { SITE_META, ADS_SLOTS_ID, ADSENSE_ID } from "../lib/constants";
 import {
   getGames,
   getCategories,
@@ -35,6 +35,11 @@ export default function Home({ games, categories }) {
       <Layout list={categories}>
         <Head>
           <title>{`${SITE_META.name} | Play Free Games Online`}</title>
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+            crossOrigin="anonymous"
+          ></script>
         </Head>
         <script
           type="application/ld+json"
