@@ -76,30 +76,12 @@ export default function Editor({ data }) {
       // game.gid = item.name == `SharkisComing` ? `SharkIsComing` : item.name; // 修复源id命名错误
       game.gid = item.name; // 修复源id命名错误
 
-      // game.category = {
-      //   name:
-      //     item.category.trim().toLowerCase() == `puzzles`
-      //       ? `Puzzle`
-      //       : item.category
-      //           .trim()
-      //           .toLowerCase()
-      //           .replace(/^\S/, (s) => s.toUpperCase()),
-      //   slug:
-      //     item.category.trim().toLowerCase() == `puzzles`
-      //       ? `puzzle`
-      //       : item.category.trim().toLowerCase(),
-      // };
-
       game.category = getCategoryID(item.category.trim().toLowerCase());
 
-      game.game_url = `${GAME_PATH}${
-        item.name == `SharkisComing` ? `SharkIsComing` : item.name
-      }`;
-      game.icon_url = `https://cdn.iwantalipstick.com/gameicon2/png/${
-        item.name == `SharkisComing` ? `SharkIsComing` : item.name
-      }.png`;
+      game.game_url = `${GAME_PATH}${item.name}`;
+      game.icon_url = `https://cdn.iwantalipstick.com/gameicon2/png/${item.name}.png`;
       game.description = item.description.trim();
-      game.oritention = LANDSCAPE_GAMES.includes(item.name.trim())
+      game.oritention = LANDSCAPE_GAMES.includes(item.name)
         ? `landscape`
         : `portrait`;
       // game.tags = null;
@@ -131,6 +113,9 @@ export default function Editor({ data }) {
 
     return (
       <>
+        <Head>
+          <title>Editor</title>
+        </Head>
         <div className="my-4">
           源数据 / Original Data: {data.gamelist.length}
         </div>
@@ -180,7 +165,9 @@ export default function Editor({ data }) {
                         )}
                       </td>
                       <td>
-                        {dayjs(new Date(game.time)).format("MMM DD, YYYY")}
+                        {dayjs(new Date(game.time)).format(
+                          "MMM DD, YYYY hh:mm"
+                        )}
                       </td>
                     </tr>
                   ))}

@@ -3,8 +3,8 @@ import { API_URL } from "../lib/constants";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-export default function useCurrentData() {
-  const { data, error } = useSWR(API_URL, fetcher);
+export default function useCurrentData(url = API_URL) {
+  const { data, error } = useSWR(url, fetcher);
 
   return {
     data,
