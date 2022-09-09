@@ -16,7 +16,7 @@ module.exports = {
   swcMinify: true,
   reactStrictMode: true,
 
-  // trailingSlash: true,
+  trailingSlash: true,
 
   generateBuildId: async () => {
     return "20220909";
