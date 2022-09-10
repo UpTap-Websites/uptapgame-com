@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/future/image";
 import { toSlug, toTitle } from "../utils/generator";
 import GameListItem from "./GameListItem";
 export default function GameList({ title, games, icon, cols, className }) {

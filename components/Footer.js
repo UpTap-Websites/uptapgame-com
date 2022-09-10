@@ -1,10 +1,10 @@
 import { SITE_NAME } from "../lib/constants";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/future/image";
 export default function Footer(params) {
   return (
-    <div className="mt-3 text-xs text-center text-slate-100/40 bg-slate-600">
-      <nav className="bg-slate-800/60 p-3 space-x-5">
+    <div className="mt-3 bg-slate-600 text-center text-xs text-slate-100/40">
+      <nav className="space-x-5 bg-slate-800/60 p-3">
         <Link href={`/t/privacy-policy`}>
           <a className="after-content-[|]">Privacy Policy</a>
         </Link>
@@ -13,7 +13,7 @@ export default function Footer(params) {
         </Link>
       </nav>
 
-      <div className="flex flex-col py-7 justify-center">
+      <div className="flex flex-col justify-center py-7">
         <Image
           className="h-10 w-auto"
           src="/brand/uptapgame-logo.svg"

@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import Link from "next/link";
 import { toTitle } from "../utils/generator";
 import Head from "next/head";
-import { SITE_NAME, IMAGE_PATH } from "../lib/constants";
+import { SITE_NAME, IMAGE_PATH, IMAGE_FORMAT } from "../lib/constants";
 
 export default function GameDetail({ game }) {
   return (
@@ -15,7 +15,7 @@ export default function GameDetail({ game }) {
       <div className="flex flex-col rounded-[2rem] border-4 border-slate-400/60 bg-white p-5 shadow-lg shadow-slate-900/10 md:flex-row">
         <div className="block text-center">
           <Image
-            src={`${IMAGE_PATH}${game.name}.png`}
+            src={`${IMAGE_PATH}${game.name}.${IMAGE_FORMAT}`}
             alt={toTitle(game.name)}
             width={150}
             height={150}

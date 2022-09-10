@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/future/image";
 import { toSlug, toTitle } from "../utils/generator";
-import { IMAGE_PATH } from "../lib/constants";
+import { IMAGE_PATH, IMAGE_FORMAT } from "../lib/constants";
 
 export default function CustomGameList({ games }) {
   const gamesList = games.map((game) => (
@@ -12,7 +12,7 @@ export default function CustomGameList({ games }) {
       <Link href={`/game/${toSlug(game.name)}`}>
         <a className="block overflow-hidden rounded-xl bg-loading bg-center bg-no-repeat shadow-md shadow-slate-900/30">
           <Image
-            src={`${IMAGE_PATH}${game.name}.png`}
+            src={`${IMAGE_PATH}${game.name}.${IMAGE_FORMAT}`}
             alt={toTitle(game.name)}
             height={200}
             width={200}

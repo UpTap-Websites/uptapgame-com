@@ -4,7 +4,7 @@ import useCurrentData from "../../data/CurrentData";
 import dayjs from "dayjs";
 import { getStars, toSlug, toTitle } from "../../utils/generator";
 import { GAME_PATH, LANDSCAPE_GAMES, RE_CATEGORY } from "../../lib/constants";
-import Image from "next/image";
+import Image from "next/future/image";
 
 export default function Editor({ data }) {
   function ShowCurrentData() {

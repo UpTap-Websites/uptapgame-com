@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/future/image";
 import { toTitle, toSlug } from "../utils/generator";
-import { IMAGE_PATH } from "../lib/constants";
+import { IMAGE_PATH, IMAGE_FORMAT } from "../lib/constants";
 import dayjs from "dayjs";
 
 const GameListItem = ({ games, className }) => {
@@ -16,7 +16,7 @@ const GameListItem = ({ games, className }) => {
           className="block overflow-hidden rounded-2xl bg-loading bg-center bg-no-repeat shadow-lg shadow-slate-900/30"
         >
           <Image
-            src={`${IMAGE_PATH}${game.name}.png`}
+            src={`${IMAGE_PATH}${game.name}.${IMAGE_FORMAT}`}
             alt={toTitle(game.name)}
             height={200}
             width={200}
