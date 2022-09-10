@@ -25,7 +25,14 @@ export default function Banner({
       <ins
         className="adsbygoogle"
         style={
-          style ? style : { display: `block`, backgroundColor: `#00000015` }
+          style
+            ? style
+            : {
+                display: `flex`,
+                justifyContent: `center`,
+                width: `100%`,
+                backgroundColor: `#00000015`,
+              }
         }
         data-ad-client={client}
         data-ad-slot={slot}
@@ -33,10 +40,10 @@ export default function Banner({
         data-full-width-responsive={responsive ? responsive : `true`}
         data-ad-layout={layout}
         data-ad-layout-key={layoutKey}
-        // {...(`${process.env.NODE_ENV}` === `development`
-        //   ? { "data-adtest": "on" }
-        //   : null)}
-        data-adtest="on"
+        {...(`${process.env.NODE_ENV}` === `development`
+          ? { "data-adtest": "on" }
+          : null)}
+        // data-adtest="on"
       ></ins>
     </div>
   );
