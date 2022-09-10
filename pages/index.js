@@ -76,8 +76,9 @@ export default function Home({ games, categories }) {
                         <Banner
                           responsive={`false`}
                           style={{
-                            display: `block`,
-                            width: `300px`,
+                            display: `flex`,
+                            justifyContent: `center`,
+                            width: `320px`,
                             backgroundColor: `#00000010`,
                             margin: `0 auto`,
                           }}

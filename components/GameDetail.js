@@ -28,14 +28,14 @@ export default function GameDetail({ game }) {
           <h1 className="py-2 text-2xl font-semibold text-slate-700">
             <span>{toTitle(game.name)}</span>
           </h1>
-          <p className="capitalize">
+          <p>
             <Link
               href={`/category/${game.category
                 .toLowerCase()
                 .replace(/ /, "-")}`}
             >
               <a className="rounded-md bg-slate-600/80 py-1 px-2 text-xs text-slate-100/60 shadow-md shadow-slate-900/30">
-                {game.category.toLowerCase()}
+                {game.category}
               </a>
             </Link>
           </p>
