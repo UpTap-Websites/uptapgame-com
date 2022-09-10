@@ -69,7 +69,11 @@ export default function Home({ games, categories }) {
                     </div>
                     {/* <GameList games={categoryGames.slice(0, 12)} cols={4} /> */}
                     <ul className="grid grid-cols-3 gap-4 px-8 py-4">
-                      <GameListItem games={categoryGames.slice(0, 6)} />
+                      {index == 1 || index == 3 ? (
+                        <GameListItem games={categoryGames.slice(0, 12)} />
+                      ) : (
+                        <GameListItem games={categoryGames.slice(0, 6)} />
+                      )}
                     </ul>
                     {index == 0 || index == 2 ? (
                       <>
