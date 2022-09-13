@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { getGamesByCategory, getCategories } from "../../lib/api";
 import Head from "next/head";
 import { SITE_NAME } from "../../lib/constants";
+import Banner from "../../components/Banner";
 
 export default function GamesListByCategory({ games, categories }) {
   // console.log(games);
@@ -18,11 +19,14 @@ export default function GamesListByCategory({ games, categories }) {
   // console.log(categoryName);
   return (
     <>
-      <Layout list={categories} isOpen>
+      <Layout list={categories}>
         <Head>
           <title>{`${categoryName} Games | ${SITE_NAME}`}</title>
         </Head>
         <div className="relative z-30 grow md:px-4">
+          <div>
+            <Banner className={`banner`} auto />
+          </div>
           <h1 className="px-4 pt-2 pb-2 text-center text-2xl font-semibold capitalize text-slate-900/80">
             {categoryName} {games.length > 1 ? `Games` : `Game`} ({games.length}
             )

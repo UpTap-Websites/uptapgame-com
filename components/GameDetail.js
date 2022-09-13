@@ -13,15 +13,15 @@ export default function GameDetail({ game }) {
         </title>
       </Head>
       <div className="flex flex-col rounded-[2rem] border-4 border-slate-400/60 bg-white p-5 shadow-lg shadow-slate-900/10 md:flex-row">
-        <div className="block text-center">
+        <div className="flex justify-center text-center">
           <Image
             src={`${IMAGE_PATH}${game.name}.${IMAGE_FORMAT}`}
             alt={toTitle(game.name)}
             width={150}
             height={150}
             quality="83"
-            className="rounded-xl bg-loading bg-center bg-no-repeat"
-            layout="fixed"
+            className="h-32 w-32 rounded-xl bg-loading bg-center bg-no-repeat"
+            layout="responsive"
           />
         </div>
         <div className="text-center md:px-5 md:text-left">

@@ -1,29 +1,60 @@
 import { useEffect } from "react";
 import { ADSENSE_ID } from "../lib/constants";
 
-export default function Banner({
+const Banner = ({
   className,
   style,
-  slot,
-  client = `${ADSENSE_ID}`,
-  format,
-  responsive,
   layout,
+  format,
+  client = ADSENSE_ID,
+  slot,
+  responsive,
   layoutKey,
-}) {
+  auto,
+}) => {
   useEffect(() => {
     try {
-      (window.adsbygoogle || []).push({});
+      let adsbygoogle = window.adsbygoogle || [];
+      adsbygoogle.push({});
     } catch (e) {
-      console.error(`Adsense Error: `, e.message);
+      console.error(e.message);
     }
   }, []);
 
-  return (
-    <div className={className ? `banner ${className}` : `banner`}>
-      <div className="text-center text-xs">ADVERTISEMENT</div>
+  const devMode = `${process.env.NODE_ENV}` === `development`;
+
+  return auto ? (
+    <div className={`${className ? className : ``}`}>
+      <div className="text-center text-xs text-black/50">ADVERTISEMENT</div>
       <ins
-        className="adsbygoogle"
+        className={`adsbygoogle`}
+        style={
+          style
+            ? style
+            : {
+                display: `flex`,
+                justifyContent: `center`,
+                margin: `0 auto`,
+              }
+        }
+        data-ad-layout={layout}
+        data-ad-format={`auto`}
+        data-ad-client={client}
+        data-ad-slot={slot}
+        data-ad-layout-key={layoutKey}
+        data-full-width-responsive={`true`}
+        {...(devMode ? { "data-adtest": "on" } : null)}
+      />
+    </div>
+  ) : (
+    <div
+      className={`${
+        className ? className : ``
+      } AdContainer relative z-0 mx-auto mb-2 flex flex-col items-center overflow-hidden bg-black/5`}
+    >
+      <div className="text-center text-xs text-black/50">ADVERTISEMENT</div>
+      <ins
+        className={`adsbygoogle`}
         style={
           style
             ? style
@@ -31,19 +62,19 @@ export default function Banner({
                 display: `flex`,
                 justifyContent: `center`,
                 width: `100%`,
-                backgroundColor: `#00000015`,
+                height: `100%`,
               }
         }
+        data-ad-layout={layout}
+        data-ad-format={format}
         data-ad-client={client}
         data-ad-slot={slot}
-        data-ad-format={format ? format : `auto`}
-        data-full-width-responsive={responsive ? responsive : `true`}
-        data-ad-layout={layout}
         data-ad-layout-key={layoutKey}
-        {...(`${process.env.NODE_ENV}` === `development`
-          ? { "data-adtest": "on" }
-          : null)}
-      ></ins>
+        data-full-width-responsive={responsive}
+        {...(devMode ? { "data-adtest": "on" } : null)}
+      />
     </div>
   );
-}
+};
+
+export default Banner;

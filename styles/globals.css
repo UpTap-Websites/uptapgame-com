@@ -95,3 +95,7 @@ th {
 th {
   @apply bg-slate-200;
 }
+
+.banner {
+  @apply bg-[#00000010]
+}
