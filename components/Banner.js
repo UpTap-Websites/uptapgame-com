@@ -43,7 +43,7 @@ const Banner = ({
         data-ad-slot={slot}
         data-ad-layout-key={layoutKey}
         data-full-width-responsive={`true`}
-        {...(devMode ? { "data-adtest": "on" } : null)}
+        {...(devMode || MODE == "dev" ? { "data-adtest": "on" } : null)}
       />
     </div>
   ) : (
