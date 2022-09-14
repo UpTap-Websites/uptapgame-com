@@ -1,11 +1,12 @@
 import Layout from "../../components/Layout";
 // import { useRouter } from "next/router";
 import { getCategories, getGames } from "../../lib/api";
-import { toSlug } from "../../utils/generator";
+import { toSlug, toTitle } from "../../utils/generator";
 import GameDetail from "../../components/GameDetail";
 import CustomGameList from "../../components/CustomGameList";
 import Head from "next/head";
-import { SITE_NAME } from "../../lib/constants";
+import { SITE_NAME, ADS_SLOTS_ID } from "../../lib/constants";
+import Banner from "../../components/Banner";
 
 export default function Games({
   game,
@@ -18,12 +19,14 @@ export default function Games({
   //const router = useRouter();
   // const { slug } = router.query;
 
+  // console.log(`game`, game);
   return (
     <>
       <Layout list={categories}>
         <Head>
-          <title>{`Play ${game} on ${SITE_NAME}`}</title>
+          <title>{`Play ${toTitle(game.name)} on ${SITE_NAME}`}</title>
         </Head>
+        <Banner auto slot={ADS_SLOTS_ID.detail} />
         <div className="relative z-30 grow p-3 md:px-6 xl:p-8">
           <div className="grid gap-3 xl:grid-cols-12 xl:grid-rows-4 xl:gap-6">
             <div className="xl:col-span-8 xl:col-start-3 xl:row-span-2 xl:row-start-1">

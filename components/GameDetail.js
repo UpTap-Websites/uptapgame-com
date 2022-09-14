@@ -7,11 +7,6 @@ import { SITE_NAME, IMAGE_PATH, IMAGE_FORMAT } from "../lib/constants";
 export default function GameDetail({ game }) {
   return (
     <>
-      <Head>
-        <title>
-          {toTitle(game.name)} | Play {toTitle(game.name)} on {SITE_NAME}
-        </title>
-      </Head>
       <div className="flex flex-col rounded-[2rem] border-4 border-slate-400/60 bg-white p-5 shadow-lg shadow-slate-900/10 md:flex-row">
         <div className="flex justify-center text-center">
           <Image
@@ -20,7 +15,7 @@ export default function GameDetail({ game }) {
             width={150}
             height={150}
             quality="83"
-            className="h-32 w-32 rounded-xl bg-loading bg-center bg-no-repeat"
+            className="h-24 w-24 rounded-xl bg-loading bg-center bg-no-repeat"
             layout="responsive"
           />
         </div>
