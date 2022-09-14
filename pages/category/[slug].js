@@ -25,7 +25,7 @@ export default function GamesListByCategory({ games, categories }) {
         </Head>
         <div className="relative z-30 grow md:px-4">
           <div>
-            <Banner className={`banner`} auto />
+            <Banner className={`banner`} auto key={Math.random()} />
           </div>
           <h1 className="px-4 pt-2 pb-2 text-center text-2xl font-semibold capitalize text-slate-900/80">
             {categoryName} {games.length > 1 ? `Games` : `Game`} ({games.length}

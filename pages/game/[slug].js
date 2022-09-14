@@ -26,7 +26,12 @@ export default function Games({
         <Head>
           <title>{`Play ${toTitle(game.name)} on ${SITE_NAME}`}</title>
         </Head>
-        <Banner auto slot={ADS_SLOTS_ID.detail} />
+        <Banner
+          className={`banner`}
+          auto
+          slot={ADS_SLOTS_ID.detail}
+          key={Math.random()}
+        />
         <div className="relative z-30 grow p-3 md:px-6 xl:p-8">
           <div className="grid gap-3 xl:grid-cols-12 xl:grid-rows-4 xl:gap-6">
             <div className="xl:col-span-8 xl:col-start-3 xl:row-span-2 xl:row-start-1">
