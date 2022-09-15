@@ -25,7 +25,7 @@ const Banner = ({
 
   return auto ? (
     <div className={`${className ? className : ``}`}>
-      <div className="text-center text-xs text-black/50">ADVERTISEMENT</div>
+      <div className="text-center text-xs text-gray-300">ADVERTISEMENT</div>
       <ins
         className={`adsbygoogle`}
         style={
@@ -62,7 +62,7 @@ const Banner = ({
         className ? className : ``
       } AdContainer relative z-0 mx-auto mb-2 flex flex-col items-center overflow-hidden bg-black/5`}
     >
-      <div className="text-center text-xs text-black/50">ADVERTISEMENT</div>
+      <div className="text-center text-xs text-gray-300">ADVERTISEMENT</div>
       <ins
         className={`adsbygoogle`}
         style={

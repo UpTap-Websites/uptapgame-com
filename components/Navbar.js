@@ -17,12 +17,12 @@ export default function Navbar({ list, isOpen }) {
 
   return (
     <nav>
-      <div className="relative z-10 block">
+      <div className="relative block">
         <Link href={`/`}>
           <a
             className={`${
               `/` == router.pathname ? `text-slate-600` : `text-slate-600/80`
-            } shadow-[lg] absolute -left-4 -top-5 z-20 flex h-20 w-20 items-center justify-center rounded-[100%] bg-slate-200/80 shadow-stone-900 transition duration-500 ease-in-out md:top-3 md:left-3 md:backdrop-blur-sm md:hover:backdrop-blur-none`}
+            } absolute -left-4 -top-5 flex h-20 w-20 items-center justify-center rounded-[100%] bg-transparent bg-gradient-to-br from-slate-300 transition duration-500 ease-in-out md:top-3 md:left-3 md:backdrop-blur-sm md:hover:backdrop-blur-none lg:z-10 lg:bg-slate-600/10`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ export default function Navbar({ list, isOpen }) {
         <div
           className={`${
             !isMenuOpen ? `hidden md:block` : `block`
-          } relative z-30 block p-3 md:z-10
+          } relative block p-3
           `}
         >
           <ul className="flex flex-wrap rounded-3xl bg-slate-800 p-2 capitalize shadow-lg shadow-slate-900/20 md:ml-3 md:mt-2 md:pl-20">
