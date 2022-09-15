@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { ADSENSE_ID, MODE } from "../lib/constants";
+import Script from "next/script";
 
 const Banner = ({
   className,
@@ -12,14 +13,13 @@ const Banner = ({
   layoutKey,
   auto,
 }) => {
-  useEffect(() => {
-    try {
-      let adsbygoogle = window.adsbygoogle || [];
-      adsbygoogle.push({});
-    } catch (e) {
-      console.error(e.message);
-    }
-  }, []);
+  // useEffect(() => {
+  //   // try {
+  //   //   (window.adsbygoogle || []).adsbygoogle.push({});
+  //   // } catch (e) {
+  //   //   console.error(e.message);
+  //   // }
+  // }, []);
 
   const devMode = `${process.env.NODE_ENV}` === `development`;
 
@@ -44,6 +44,16 @@ const Banner = ({
         data-ad-layout-key={layoutKey}
         data-full-width-responsive={`true`}
         {...(devMode || MODE == "dev" ? { "data-adtest": "on" } : null)}
+      />
+      <Script
+        id={slot}
+        dangerouslySetInnerHTML={{
+          __html: `
+        try {
+          (adsbygoogle = window.adsbygoogle || []).push({})
+        } catch(e) { console.log(e) }
+      `,
+        }}
       />
     </div>
   ) : (
@@ -72,6 +82,16 @@ const Banner = ({
         data-ad-layout-key={layoutKey}
         data-full-width-responsive={responsive}
         {...(devMode || MODE == "dev" ? { "data-adtest": "on" } : null)}
+      />
+      <Script
+        id={Math.random()}
+        dangerouslySetInnerHTML={{
+          __html: `
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({})
+          } catch(e) { console.log(e) }
+      `,
+        }}
       />
     </div>
   );

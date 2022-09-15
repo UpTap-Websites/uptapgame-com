@@ -33,12 +33,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Script
-        async="true"
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
-        crossOrigin="anonymous"
-        strategy="beforeInteractive"
-      />
-      <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
       />
@@ -56,6 +50,16 @@ function MyApp({ Component, pageProps }) {
           `,
         }}
       />
+      {/* <Script
+        id="adsense-push"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        `,
+        }}
+      /> */}
+
       <Component {...pageProps} />
     </>
   );
