@@ -22,7 +22,7 @@ export default function Navbar({ list, isOpen }) {
           <a
             className={`${
               `/` == router.pathname ? `text-slate-600` : `text-slate-600/80`
-            } absolute -left-4 -top-5 flex h-20 w-20 items-center justify-center rounded-[100%] bg-transparent bg-gradient-to-br from-slate-300 transition duration-500 ease-in-out md:top-3 md:left-3 md:backdrop-blur-sm md:hover:backdrop-blur-none lg:z-10 lg:bg-slate-600/10`}
+            } absolute -left-4 -top-5 flex h-20 w-20 items-center justify-center rounded-[100%] bg-transparent bg-gradient-to-br from-slate-300 transition duration-500 ease-in-out md:top-3 md:left-3 md:backdrop-blur-sm md:hover:backdrop-blur-none lg:z-10 lg:bg-slate-400/40`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

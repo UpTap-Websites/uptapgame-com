@@ -60,7 +60,7 @@ const Banner = ({
     <div
       className={`${
         className ? className : ``
-      } AdContainer relative z-0 mx-auto mb-2 flex flex-col items-center overflow-hidden bg-black/5`}
+      } AdContainer relative z-0 mx-auto mb-2 flex flex-col items-center overflow-hidden`}
     >
       <div className="text-center text-xs text-gray-300">ADVERTISEMENT</div>
       <ins

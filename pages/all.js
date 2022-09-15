@@ -5,6 +5,7 @@ import { SITE_NAME } from "../lib/constants";
 import { getGames, getCategories } from "../lib/api";
 import CategoryList from "../components/CategoryList";
 import ScrollGameList from "../components/ScrollGameList";
+import Banner from "../components/Banner";
 
 export default function AllGames({
   games,
@@ -20,6 +21,9 @@ export default function AllGames({
         <Head>
           <title>{`All Games | ${SITE_NAME}`}</title>
         </Head>
+        <div>
+          <Banner className={`banner`} auto key={Math.random()} />
+        </div>
         <div className="relative z-30 grow md:px-4">
           <ScrollGameList
             icon={gameIcon()}
