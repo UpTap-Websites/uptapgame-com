@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
-import { GA_ID } from "../lib/constants";
+import { GA_ID, ADSENSE_ID } from "../lib/constants";
 import * as gtag from "../lib/gtag";
 import NProgress from "nprogress";
 import "../styles/globals.css";
@@ -32,6 +32,12 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      <Script
+        async="true"
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+        crossOrigin="anonymous"
+        strategy="beforeInteractive"
+      />
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
