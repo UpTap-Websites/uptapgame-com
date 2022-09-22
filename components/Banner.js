@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { ADSENSE_ID, MODE } from "../lib/constants";
-import Script from "next/script";
+// import Script from "next/script";
 
 const Banner = ({
   className,
@@ -46,16 +46,16 @@ const Banner = ({
         data-full-width-responsive={`true`}
         {...(devMode || MODE == "dev" ? { "data-adtest": "on" } : null)}
       />
-      <Script
+      {/* <Script
         id={slot}
         dangerouslySetInnerHTML={{
           __html: `
-        try {
-          (adsbygoogle = window.adsbygoogle || []).push({})
-        } catch(e) { console.log(e) }
-      `,
+            try {
+              (adsbygoogle = window.adsbygoogle || []).push({})
+            } catch(e) { console.log(e) }
+          `,
         }}
-      />
+      /> */}
     </div>
   ) : (
     <div
@@ -84,7 +84,7 @@ const Banner = ({
         data-full-width-responsive={responsive}
         {...(devMode ? { "data-adtest": "on" } : null)}
       />
-      <Script
+      {/* <Script
         id={slot}
         key={Math.random()}
         dangerouslySetInnerHTML={{
@@ -94,7 +94,7 @@ const Banner = ({
           } catch(e) { console.log(e) }
       `,
         }}
-      />
+      /> */}
     </div>
   );
 };

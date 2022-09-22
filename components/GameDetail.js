@@ -15,7 +15,7 @@ export default function GameDetail({ game }) {
             width={150}
             height={150}
             quality="83"
-            className="h-24 w-24 rounded-xl bg-loading bg-center bg-no-repeat"
+            className="h-24 w-24 shrink-0 rounded-xl bg-loading bg-center bg-no-repeat"
             layout="responsive"
           />
         </div>
