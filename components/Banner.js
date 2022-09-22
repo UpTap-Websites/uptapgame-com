@@ -13,15 +13,16 @@ const Banner = ({
   layoutKey,
   auto,
 }) => {
-  // useEffect(() => {
-  //   // try {
-  //   //   (window.adsbygoogle || []).adsbygoogle.push({});
-  //   // } catch (e) {
-  //   //   console.error(e.message);
-  //   // }
-  // }, []);
+  useEffect(() => {
+    try {
+      let adsbygoogle = window.adsbygoogle || [];
+      adsbygoogle.push({});
+    } catch (e) {
+      console.error(e.message);
+    }
+  }, []);
 
-  const devMode = `${process.env.NODE_ENV}` === `development`;
+  const devMode = `${process.env.NODE_ENV}` === `development` || MODE === "dev";
 
   return auto ? (
     <div className={`${className ? className : ``}`}>
@@ -81,10 +82,11 @@ const Banner = ({
         data-ad-slot={slot}
         data-ad-layout-key={layoutKey}
         data-full-width-responsive={responsive}
-        {...(devMode || MODE == "dev" ? { "data-adtest": "on" } : null)}
+        {...(devMode ? { "data-adtest": "on" } : null)}
       />
       <Script
-        id={Math.random()}
+        id={slot}
+        key={Math.random()}
         dangerouslySetInnerHTML={{
           __html: `
           try {
