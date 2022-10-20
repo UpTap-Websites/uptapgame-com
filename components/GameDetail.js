@@ -8,7 +8,7 @@ export default function GameDetail({ game }) {
   return (
     <>
       <div className="flex flex-col rounded-[2rem] border-4 border-slate-400/60 bg-white p-5 shadow-lg shadow-slate-900/10 md:flex-row">
-        <div className="flex justify-center text-center">
+        <div className="flex shrink-0 justify-center text-center">
           <Image
             src={`${IMAGE_PATH}${game.name}.${IMAGE_FORMAT}`}
             alt={toTitle(game.name)}
