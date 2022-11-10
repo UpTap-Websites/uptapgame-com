@@ -41,7 +41,7 @@ export default function Navbar({ list, isOpen }) {
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke="currentColor"
-            className="h-6 w-6 text-gray-600"
+            className="h-6 w-6 text-gray-600 lg:h-8 lg:w-8 lg:text-white"
           >
             <path
               strokeLinecap="round"
