@@ -2,19 +2,13 @@ import Link from "next/link";
 import Image from "next/future/image";
 import { toTitle, toSlug } from "../utils/generator";
 import { IMAGE_PATH, IMAGE_FORMAT } from "../lib/constants";
-import dayjs from "dayjs";
+// import dayjs from "dayjs";
 
-const GameListItem = ({ games, className }) => {
+export default function GameListItem({ games, className }) {
   return games.map((game) => (
-    <li
-      key={game.id}
-      className={`xl:transition xl:duration-500 xl:ease-in-out xl:hover:scale-125 ${className}`}
-    >
+    <li key={game.name} className={`list-item ${className ? className : ``}`}>
       <Link href={`/game/${toSlug(game.name)}`}>
-        <a
-          title={toTitle(game.name)}
-          className="block overflow-hidden rounded-2xl bg-loading bg-center bg-no-repeat shadow-lg shadow-slate-900/30"
-        >
+        <a title={toTitle(game.name)} className="item-link">
           <Image
             src={`${IMAGE_PATH}${game.name}.${IMAGE_FORMAT}`}
             alt={toTitle(game.name)}
@@ -25,14 +19,10 @@ const GameListItem = ({ games, className }) => {
           />
         </a>
       </Link>
-      <h3 className="my-2 text-center text-xs font-bold leading-tight">
-        {toTitle(game.name)}
-      </h3>
-      <div className="hidden text-center text-xs">
+      <h3>{toTitle(game.name)}</h3>
+      {/* <div className="hidden text-center text-xs">
         {dayjs(new Date(game.time)).format("MMM DD, YYYY")}
-      </div>
+      </div> */}
     </li>
   ));
-};
-
-export default GameListItem;
+}

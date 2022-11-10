@@ -1,8 +1,8 @@
 import Image from "next/future/image";
 import Link from "next/link";
 import { toTitle } from "../utils/generator";
-import Head from "next/head";
-import { SITE_NAME, IMAGE_PATH, IMAGE_FORMAT } from "../lib/constants";
+
+import { IMAGE_PATH, IMAGE_FORMAT } from "../lib/constants";
 
 export default function GameDetail({ game }) {
   return (
@@ -15,7 +15,7 @@ export default function GameDetail({ game }) {
             width={150}
             height={150}
             quality="83"
-            className="h-24 w-24 shrink-0 rounded-xl bg-loading bg-center bg-no-repeat"
+            className="h-24 w-24 shrink-0 rounded-xl"
             layout="responsive"
           />
         </div>

@@ -2,6 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Layout */
+body {
+  @apply bg-slate-600;
+}
+
+.wrapper {
+  @apply flex min-h-screen flex-col bg-slate-50 text-sm text-slate-800;
+}
+
+.main {
+  @apply relative z-30 grow md:px-4;
+}
+
+/* Navbar */
+.menu-icon {
+  @apply ml-auto flex h-10 w-10 items-center justify-center md:hidden;
+}
+.home-icon {
+  @apply absolute -left-4 -top-5 flex h-20 w-20 items-center justify-center rounded-full bg-transparent bg-gradient-to-br from-slate-300 transition duration-500 ease-in-out md:top-3 md:left-3 md:backdrop-blur-sm md:hover:backdrop-blur-none lg:z-10 lg:bg-slate-400/40;
+}
+.search-icon {
+  @apply absolute right-12 -top-0 z-20 grid h-10 w-10 content-center justify-center;
+}
+.nav-list {
+  @apply flex flex-wrap rounded-3xl bg-slate-800 p-2 capitalize shadow-lg shadow-slate-900/20 md:ml-3 md:mt-2 md:pl-20;
+  li {
+    @apply basis-1/3 md:basis-auto;
+    a {
+      @apply m-1 block rounded-xl border-2 p-2 text-center text-white md:bg-slate-50/0 xl:transition xl:duration-500 xl:ease-in-out xl:hover:bg-slate-50/10;
+    }
+  }
+  .current {
+    a {
+      @apply border-slate-50/80 bg-slate-50/20 opacity-80 md:bg-slate-50/10 md:shadow-lg;
+    }
+  }
+  .normal {
+    a {
+      @apply border-slate-50/20 bg-slate-50/10 md:border-slate-50/0 md:bg-transparent md:shadow-none;
+    }
+  }
+}
+
+/* Footer */
+.site-footer {
+  @apply mt-3 bg-slate-600 text-center text-xs text-slate-100/40;
+  nav {
+    @apply flex justify-center space-x-4 divide-white/10 bg-slate-800/60 p-3;
+    a {
+      @apply block;
+    }
+  }
+}
+.copyright {
+  @apply flex flex-col justify-center py-7;
+}
+/* Category */
+.category {
+  h1 {
+    @apply px-4 pt-2 pb-2 text-center text-2xl font-semibold capitalize text-slate-900/80;
+  }
+}
+
+/* Game List */
+.game-list {
+  @apply grid gap-4 p-2 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-8 xl:gap-6 xl:py-4 xl:px-8 2xl:grid-cols-12;
+}
+.list-item {
+  @apply xl:transition xl:duration-500 xl:ease-in-out xl:hover:scale-125;
+  h3 {
+    @apply my-2 text-center text-xs font-bold leading-tight;
+  }
+}
+.item-link {
+  @apply block overflow-hidden rounded-2xl shadow-lg shadow-slate-900/30;
+}
 /* Make clicks pass-through */
 #nprogress {
   pointer-events: none;
@@ -96,3 +172,22 @@ th {
   @apply bg-slate-200;
 }
 
+/* Policy Pages */
+.page {
+  @apply p-3 xl:mx-auto xl:w-[1120px];
+  h1 {
+    @apply text-xl font-bold;
+  }
+  h2 {
+    @apply my-3 font-bold;
+  }
+  p {
+    @apply my-2;
+  }
+  ul {
+    @apply my-2 ml-4 list-outside list-disc;
+  }
+  a {
+    @apply underline;
+  }
+}

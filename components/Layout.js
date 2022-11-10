@@ -1,11 +1,12 @@
 import Head from "next/head";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import SearchPanel from "./SearchPanel";
 
 export default function Layout({ list, isOpen, children }) {
   // console.log(list);
   return (
-    <div className="flex flex-col text-sm bg-slate-50 text-stone-900/80 min-h-screen">
+    <div className="wrapper">
       <Head>
         <meta
           name="viewport"
@@ -17,7 +18,7 @@ export default function Layout({ list, isOpen, children }) {
           sizes="128x128"
         />
       </Head>
-
+      <SearchPanel />
       <Navbar list={list} isOpen={isOpen} />
       {children}
       <Footer />

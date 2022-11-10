@@ -3,8 +3,9 @@ import GameList from "../../components/GameList";
 import { useRouter } from "next/router";
 import { getGamesByCategory, getCategories } from "../../lib/api";
 import Head from "next/head";
-import { SITE_NAME } from "../../lib/constants";
+import { SITE_META, ADSENSE_ID } from "../../lib/constants";
 import Banner from "../../components/Banner";
+import Script from "next/script";
 
 export default function GamesListByCategory({ games, categories }) {
   // console.log(games);
@@ -19,20 +20,27 @@ export default function GamesListByCategory({ games, categories }) {
   // console.log(categoryName);
   return (
     <>
+      <Head>
+        <title>{`${categoryName} Games | ${SITE_META.NAME}`}</title>
+      </Head>
+      <Script
+        id="ads-init"
+        strategy="beforeInteractive"
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+        crossOrigin="anonymous"
+      />
       <Layout list={categories}>
-        <Head>
-          <title>{`${categoryName} Games | ${SITE_NAME}`}</title>
-        </Head>
-        <div className="relative z-30 grow md:px-4">
+        <main className="main category">
           <div>
             <Banner className={`banner`} auto key={Math.random()} />
           </div>
-          <h1 className="px-4 pt-2 pb-2 text-center text-2xl font-semibold capitalize text-slate-900/80">
+          <h1>
             {categoryName} {games.length > 1 ? `Games` : `Game`} ({games.length}
             )
           </h1>
           <GameList cols="4" games={games} />
-        </div>
+        </main>
       </Layout>
     </>
   );

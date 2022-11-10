@@ -1,11 +1,12 @@
 import Head from "next/head";
 import { gameIcon, categoryIcon } from "../components/Icons";
 import Layout from "../components/Layout";
-import { SITE_NAME } from "../lib/constants";
+import { SITE_META, ADSENSE_ID } from "../lib/constants";
 import { getGames, getCategories } from "../lib/api";
 import CategoryList from "../components/CategoryList";
 import ScrollGameList from "../components/ScrollGameList";
 import Banner from "../components/Banner";
+import Script from "next/script";
 
 export default function AllGames({
   games,
@@ -17,14 +18,21 @@ export default function AllGames({
   // const gameList = games.map((game) => <li key={game.id}>{game.name}</li>);
   return (
     <>
+      <Head>
+        <title>{`All Games | ${SITE_META.NAME}`}</title>
+      </Head>
+      <Script
+        id="ads-init"
+        strategy="beforeInteractive"
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+        crossOrigin="anonymous"
+      />
       <Layout list={categories}>
-        <Head>
-          <title>{`All Games | ${SITE_NAME}`}</title>
-        </Head>
         <div>
           <Banner className={`banner`} auto key={Math.random()} />
         </div>
-        <div className="relative z-30 grow md:px-4">
+        <main className="main all-games">
           <ScrollGameList
             icon={gameIcon()}
             games={games}
@@ -38,7 +46,7 @@ export default function AllGames({
             title="Categories"
             categories={categories}
           />
-        </div>
+        </main>
       </Layout>
     </>
   );
