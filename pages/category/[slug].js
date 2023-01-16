@@ -15,7 +15,10 @@ export default function GamesListByCategory({ games, categories }) {
   const categoryName =
     slug.toLowerCase() == "io"
       ? "IO"
-      : slug.toString().replace(/^\S/, (s) => s.toUpperCase());
+      : slug
+          .toString()
+          .replace(/^\S/, (s) => s.toUpperCase())
+          .replace(/-/g, " ");
   // console.log(categoryName);
   return (
     <>

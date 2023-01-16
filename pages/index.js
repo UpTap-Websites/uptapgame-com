@@ -61,7 +61,9 @@ export default function Home({ games, categories }) {
                       </h2>
                       {categoryGames.length > 6 ? (
                         <div>
-                          <Link href={`/category/${category}`}>
+                          <Link
+                            href={`/category/${category.replace(/ /, "-")}`}
+                          >
                             <a>MORE</a>
                           </Link>
                         </div>
