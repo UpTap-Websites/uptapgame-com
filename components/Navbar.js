@@ -22,7 +22,7 @@ export default function Navbar({ list, isOpen }) {
           <a
             className={`${
               `/` == router.pathname ? `text-slate-600` : `text-slate-600/80`
-            } absolute -left-4 -top-5 flex h-20 w-20 items-center justify-center rounded-[100%] bg-transparent bg-gradient-to-br from-slate-300 transition duration-500 ease-in-out md:top-3 md:left-3 md:backdrop-blur-sm md:hover:backdrop-blur-none lg:z-10 lg:bg-slate-400/40`}
+            } home-icon`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -34,10 +34,23 @@ export default function Navbar({ list, isOpen }) {
             </svg>
           </a>
         </Link>
-        <button
-          onClick={toggle}
-          className="ml-auto flex h-10 w-10 items-center justify-center md:hidden"
-        >
+        <button className="search-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="h-6 w-6 text-gray-600 lg:h-8 lg:w-8 lg:text-white"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            />
+          </svg>
+        </button>
+        <button onClick={toggle} className="menu-icon">
           {!isMenuOpen ? closeIcon() : menuIcon()}
         </button>
         <div
@@ -45,45 +58,21 @@ export default function Navbar({ list, isOpen }) {
             !isMenuOpen ? `hidden md:block` : `block`
           } relative block p-3`}
         >
-          <ul className="flex flex-wrap rounded-3xl bg-slate-800 p-2 capitalize shadow-lg shadow-slate-900/20 md:ml-3 md:mt-2 md:pl-20">
+          <ul className="nav-list">
             <li
-              className={`${
-                `/all` == router.pathname
-                  ? `border-slate-50/80 bg-slate-50/20 md:bg-slate-50/10 md:shadow-lg`
-                  : `border-slate-50/20 bg-slate-50/10 md:border-slate-50/0 md:shadow-none`
-              } m-1 rounded-xl border-2 md:bg-slate-50/0 xl:transition xl:duration-500 xl:ease-in-out xl:hover:bg-slate-50/10`}
+              className={`${`/all` == router.pathname ? `current` : `normal`}`}
             >
               <Link href={`/all`}>
-                <a
-                  className={`${
-                    `/all` == router.pathname
-                      ? `bg-slate-50/10 opacity-80`
-                      : `opacity-50`
-                  } block p-2 text-white`}
-                >
-                  All
-                </a>
+                <a>All</a>
               </Link>
             </li>
             {list.sort().map((category) => (
               <li
-                className={`${
-                  category == current.slug
-                    ? `border-slate-50/80 bg-slate-50/20 md:bg-slate-50/10 md:shadow-lg`
-                    : `border-slate-50/20 bg-slate-50/10 md:border-slate-50/0 md:shadow-none`
-                } m-1 rounded-xl border-2 md:bg-slate-50/0 xl:transition xl:duration-500 xl:ease-in-out xl:hover:bg-slate-50/10`}
+                className={`${category == current.slug ? `current` : `normal`}`}
                 key={category}
               >
                 <Link href={`/category/${category.replace(/ /, "-")}`}>
-                  <a
-                    className={`${
-                      category == current.slug
-                        ? `bg-slate-50/10 opacity-80`
-                        : `opacity-50`
-                    } block p-2 text-white`}
-                  >
-                    {category.toLowerCase() == "io" ? "IO" : category}
-                  </a>
+                  <a>{category.toLowerCase() == "io" ? "IO" : category}</a>
                 </Link>
               </li>
             ))}

@@ -5,8 +5,9 @@ import { toSlug, toTitle } from "../../utils/generator";
 import GameDetail from "../../components/GameDetail";
 import CustomGameList from "../../components/CustomGameList";
 import Head from "next/head";
-import { SITE_NAME, ADS_SLOTS_ID } from "../../lib/constants";
+import { SITE_META, ADS_SLOTS_ID, ADSENSE_ID } from "../../lib/constants";
 import Banner from "../../components/Banner";
+import Script from "next/script";
 
 export default function Games({
   game,
@@ -22,17 +23,24 @@ export default function Games({
   // console.log(`game`, game);
   return (
     <>
+      <Head>
+        <title>{`Play ${toTitle(game.name)} on ${SITE_META.NAME}`}</title>
+      </Head>
+      <Script
+        id="ads-init"
+        strategy="beforeInteractive"
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+        crossOrigin="anonymous"
+      />
       <Layout list={categories}>
-        <Head>
-          <title>{`Play ${toTitle(game.name)} on ${SITE_NAME}`}</title>
-        </Head>
         <Banner
           className={`banner`}
           auto
           slot={ADS_SLOTS_ID.detail}
           key={Math.random()}
         />
-        <div className="relative z-30 grow p-3 md:px-6 xl:p-8">
+        <main className="main detail">
           <div className="grid gap-3 xl:grid-cols-12 xl:grid-rows-4 xl:gap-6">
             <div className="xl:col-span-8 xl:col-start-3 xl:row-span-2 xl:row-start-1">
               <GameDetail game={game} />
@@ -56,7 +64,7 @@ export default function Games({
               </ul>
             </div>
           </div>
-        </div>
+        </main>
       </Layout>
     </>
   );
@@ -69,9 +77,10 @@ export async function getStaticProps(context) {
     (game) => toSlug(game.name) == `${context.params.slug}`
   );
   // console.log(game);
-  const _relatedGames = _games.filter(
-    (g) => toSlug(g.name) !== `${context.params.slug}`
-  );
+  const _relatedGames = _games
+    .filter((g) => toSlug(g.name) !== `${context.params.slug}`)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 32);
   // console.log(currentGameIndex);
   let relatedGames = [];
   _relatedGames.map((item) => {
@@ -80,9 +89,7 @@ export async function getStaticProps(context) {
       name: item.name,
     });
   });
-  relatedGames.sort(function () {
-    return 0.5 - Math.random();
-  });
+  // relatedGames.sort(() => 0.5 - Math.random());
 
   return {
     props: {

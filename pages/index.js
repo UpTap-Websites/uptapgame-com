@@ -1,17 +1,15 @@
 import Head from "next/head";
+import Banner from "../components/Banner";
 import { categoryIcon } from "../components/Icons";
 import Layout from "../components/Layout";
-import { SITE_META, ADS_SLOTS_ID } from "../lib/constants";
-import {
-  getGames,
-  getCategories,
-  // getGamesByCategory
-} from "../lib/api";
-import Banner from "../components/Banner";
+import { getCategories, getGames } from "../lib/api";
+import { ADSENSE_ID, ADS_SLOTS_ID, SITE_META } from "../lib/constants";
 // import GameList from "../components/GameList";
-import CategoryList from "../components/CategoryList";
 import Link from "next/link";
+import Script from "next/script";
+import CategoryList from "../components/CategoryList";
 import GameListItem from "../components/GameListItem";
+
 // import ScrollGameList from "../components/ScrollGameList";
 
 export default function Home({ games, categories }) {
@@ -26,22 +24,29 @@ export default function Home({ games, categories }) {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    url: SITE_META.url,
-    name: SITE_META.name,
-    logo: `${SITE_META.url}brand/uptapgame-logo.svg`,
+    url: SITE_META.URL,
+    name: SITE_META.NAME,
+    logo: `${SITE_META.URL}brand/uptapgame-logo.svg`,
   };
   return (
     <>
+      <Head>
+        <title>{`${SITE_META.NAME} | Play Free Games Online`}</title>
+      </Head>
+      <Script
+        id="ads-init"
+        strategy="beforeInteractive"
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+        crossOrigin="anonymous"
+      />
       <Layout list={categories}>
-        <Head>
-          <title>{`${SITE_META.name} | Play Free Games Online`}</title>
-        </Head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
 
-        <div className="relative z-30 grow md:px-4">
+        <main className="main homepage">
           <div className="flex flex-col xl:flex-row xl:flex-wrap">
             {categories
               .slice()
@@ -103,7 +108,7 @@ export default function Home({ games, categories }) {
             title="Categories"
             categories={categories.slice()}
           />
-        </div>
+        </main>
       </Layout>
     </>
   );
@@ -117,10 +122,10 @@ export const getStaticProps = async () => {
   let games = [];
   _games.map((item) => {
     games.push({
-      id: item.id,
+      // id: item.id,
       name: item.name,
       category: item.category,
-      time: item.time,
+      // time: item.time,
       //icon: item.icon,
     });
   });

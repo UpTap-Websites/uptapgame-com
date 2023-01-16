@@ -7,7 +7,11 @@ module.exports = {
     imageSizes: [96, 128, 256],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    unoptimized: true,
   },
   swcMinify: true,
   reactStrictMode: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "development" ? false : true,
+  },
 };
