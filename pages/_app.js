@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
-import { GA_ID } from "../lib/constants";
+import { GA_ID } from "@/lib/constants";
 
-import * as gtag from "../lib/gtag";
+import * as gtag from "@/lib/gtag";
 import NProgress from "nprogress";
-import "../styles/globals.css";
+import "@/styles/globals.css";
 // import "../public/nprogress.css";
 
 function MyApp({ Component, pageProps }) {

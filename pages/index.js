@@ -1,14 +1,14 @@
 import Head from "next/head";
-import Banner from "../components/Banner";
-import { categoryIcon } from "../components/Icons";
-import Layout from "../components/Layout";
-import { getCategories, getGames } from "../lib/api";
-import { ADSENSE_ID, ADS_SLOTS_ID, SITE_META } from "../lib/constants";
-// import GameList from "../components/GameList";
+import Banner from "@/components/Banner";
+import { categoryIcon } from "@/components/Icons";
+import Layout from "@/components/Layout";
+import { getCategories, getGames } from "@/lib/api";
+import { ADSENSE_ID, ADS_SLOTS_ID, SITE_META } from "@/lib/constants";
+// import GameList from "@/components/GameList";
 import Link from "next/link";
 import Script from "next/script";
-import CategoryList from "../components/CategoryList";
-import GameListItem from "../components/GameListItem";
+import CategoryList from "@/components/CategoryList";
+import GameListItem from "@/components/GameListItem";
 
 // import ScrollGameList from "../components/ScrollGameList";
 
@@ -52,25 +52,19 @@ export default function Home({ games, categories }) {
               .slice()
               .sort((a, b) => (getGameTotal(a) < getGameTotal(b) ? 1 : -1))
               .map((category, index) => {
-                let categoryGames = games.filter(
-                  (game) => game.category.toLowerCase() == category
-                );
+                let categoryGames = games.filter((game) => game.category.toLowerCase() == category);
                 return (
                   <div className="xl:basis-1/4" key={category}>
                     <div className="flex flex-row items-center justify-between p-3 text-sm font-semibold xl:px-8 xl:pb-1">
                       <h2 className="text-lg capitalize text-slate-600 xl:text-xl">
-                        {category.toLowerCase() == "io" ? "IO" : category} Games
+                        {category.toLowerCase() == "io" ? ".IO" : category} Games
                         <span className="ml-2 rounded-md bg-slate-200 p-1 text-sm font-normal">
                           {categoryGames.length}
                         </span>
                       </h2>
                       {categoryGames.length > 6 ? (
                         <div>
-                          <Link
-                            href={`/category/${category.replace(/ /, "-")}`}
-                          >
-                            <a>MORE</a>
-                          </Link>
+                          <Link href={`/category/${category.replace(/ /, "-")}`}>MORE</Link>
                         </div>
                       ) : null}
                     </div>
@@ -103,11 +97,7 @@ export default function Home({ games, categories }) {
                 );
               })}
           </div>
-          <CategoryList
-            icon={categoryIcon()}
-            title="Categories"
-            categories={categories.slice()}
-          />
+          <CategoryList icon={categoryIcon()} title="Categories" categories={categories.slice()} />
         </main>
       </Layout>
     </>

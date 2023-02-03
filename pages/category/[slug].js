@@ -1,10 +1,10 @@
-import Layout from "../../components/Layout";
-import GameList from "../../components/GameList";
+import Layout from "@/components/Layout";
+import GameList from "@/components/GameList";
 import { useRouter } from "next/router";
-import { getGamesByCategory, getCategories } from "../../lib/api";
+import { getGamesByCategory, getCategories } from "@/lib/api";
 import Head from "next/head";
-import { SITE_META, ADSENSE_ID } from "../../lib/constants";
-import Banner from "../../components/Banner";
+import { SITE_META, ADSENSE_ID } from "@/lib/constants";
+import Banner from "@/components/Banner";
 import Script from "next/script";
 
 export default function GamesListByCategory({ games, categories }) {
@@ -39,8 +39,7 @@ export default function GamesListByCategory({ games, categories }) {
             <Banner className={`banner`} auto key={Math.random()} />
           </div>
           <h1>
-            {categoryName} {games.length > 1 ? `Games` : `Game`} ({games.length}
-            )
+            {categoryName} {games.length > 1 ? `Games` : `Game`} ({games.length})
           </h1>
           <GameList cols="4" games={games} />
         </main>
@@ -50,9 +49,7 @@ export default function GamesListByCategory({ games, categories }) {
 }
 
 export async function getStaticProps(context) {
-  const _games = await getGamesByCategory(
-    `${context.params.slug.replace(/-/, " ")}`
-  );
+  const _games = await getGamesByCategory(`${context.params.slug.replace(/-/, " ")}`);
   const categories = await getCategories();
   let games = [];
   _games.map((item) => {

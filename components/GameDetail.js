@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import Link from "next/link";
 import { toTitle } from "../utils/generator";
 
@@ -16,7 +16,6 @@ export default function GameDetail({ game }) {
             height={150}
             quality="83"
             className="h-24 w-24 shrink-0 rounded-xl"
-            layout="responsive"
           />
         </div>
         <div className="text-center md:px-5 md:text-left">
@@ -25,28 +24,22 @@ export default function GameDetail({ game }) {
           </h1>
           <p>
             <Link
-              href={`/category/${game.category
-                .toLowerCase()
-                .replace(/ /, "-")}`}
+              href={`/category/${game.category.replace(/ /, "-")}`}
+              className="rounded-md bg-slate-600/80 py-1 px-2 text-xs text-slate-100/60 shadow-md shadow-slate-900/30"
             >
-              <a className="rounded-md bg-slate-600/80 py-1 px-2 text-xs text-slate-100/60 shadow-md shadow-slate-900/30">
-                {game.category}
-              </a>
+              {game.category.replace(/^\S/, (s) => s.toUpperCase())}
             </Link>
           </p>
-          <p className="py-3 text-left text-xs md:text-sm">
-            {game.description}
-          </p>
+          <p className="py-3 text-left text-xs md:text-sm">{game.description}</p>
         </div>
       </div>
       <p className="py-5">
-        <Link href={game.url}>
-          <a
-            className="mx-auto block rounded-full bg-orange-500 p-3 text-center text-lg font-semibold text-white shadow-lg shadow-orange-400/40 md:w-96"
-            title={`Play ${toTitle(game.name)} Now`}
-          >
-            Play Now
-          </a>
+        <Link
+          href={game.url}
+          className="mx-auto block rounded-full bg-orange-500 p-3 text-center text-lg font-semibold text-white shadow-lg shadow-orange-400/40 md:w-96"
+          title={`Play ${toTitle(game.name)} Now`}
+        >
+          Play Now
         </Link>
       </p>
     </>

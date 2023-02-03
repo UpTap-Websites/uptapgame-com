@@ -18,21 +18,19 @@ export default function Navbar({ list, isOpen }) {
   return (
     <nav>
       <div className="relative block">
-        <Link href={`/`}>
-          <a
-            className={`${
-              `/` == router.pathname ? `text-slate-600` : `text-slate-600/80`
-            } home-icon`}
+        <Link
+          href={`/`}
+          className={`${`/` == router.pathname ? `text-slate-600` : `text-slate-600/80`} home-icon`}
+          passHref
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            viewBox="0 0 20 20"
+            fill="currentColor"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-            </svg>
-          </a>
+            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+          </svg>
         </Link>
         <button className="search-icon">
           <svg
@@ -53,26 +51,15 @@ export default function Navbar({ list, isOpen }) {
         <button onClick={toggle} className="menu-icon">
           {!isMenuOpen ? closeIcon() : menuIcon()}
         </button>
-        <div
-          className={`${
-            !isMenuOpen ? `hidden md:block` : `block`
-          } relative block p-3`}
-        >
+        <div className={`${!isMenuOpen ? `hidden md:block` : `block`} relative block p-3`}>
           <ul className="nav-list">
-            <li
-              className={`${`/all` == router.pathname ? `current` : `normal`}`}
-            >
-              <Link href={`/all`}>
-                <a>All</a>
-              </Link>
+            <li className={`${`/all` == router.pathname ? `current` : `normal`}`}>
+              <Link href={`/all`}>All</Link>
             </li>
             {list.sort().map((category) => (
-              <li
-                className={`${category == current.slug ? `current` : `normal`}`}
-                key={category}
-              >
+              <li className={`${category == current.slug ? `current` : `normal`}`} key={category}>
                 <Link href={`/category/${category.replace(/ /, "-")}`}>
-                  <a>{category.toLowerCase() == "io" ? "IO" : category}</a>
+                  {category.toLowerCase() == "io" ? "IO" : category}
                 </Link>
               </li>
             ))}

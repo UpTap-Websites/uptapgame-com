@@ -2,10 +2,11 @@ import Link from "next/link";
 export default function CategoryList({ title, categories, icon }) {
   const categoryList = categories.map((category, index) => (
     <li key={index} className="mx-1 mb-2 capitalize xl:mx-2">
-      <Link href={`/category/${category.replace(/ /, "-")}`}>
-        <a className="block rounded-full bg-slate-600/80 py-1 px-2 text-sm text-slate-100/60 shadow-md shadow-slate-900/30 md:py-2 md:px-3 xl:transition xl:duration-300 xl:ease-in-out xl:hover:scale-110">
-          {category.toLowerCase() === "io" ? "IO" : category}
-        </a>
+      <Link
+        href={`/category/${category.replace(/ /, "-")}`}
+        className="block rounded-full bg-slate-600/80 py-1 px-2 text-sm text-slate-100/60 shadow-md shadow-slate-900/30 md:py-2 md:px-3 xl:transition xl:duration-300 xl:ease-in-out xl:hover:scale-110"
+      >
+        {category.toLowerCase() === "io" ? "IO" : category}
       </Link>
     </li>
   ));

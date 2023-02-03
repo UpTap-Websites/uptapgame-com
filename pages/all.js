@@ -1,11 +1,11 @@
 import Head from "next/head";
-import { gameIcon, categoryIcon } from "../components/Icons";
-import Layout from "../components/Layout";
-import { SITE_META, ADSENSE_ID } from "../lib/constants";
-import { getGames, getCategories } from "../lib/api";
-import CategoryList from "../components/CategoryList";
-import ScrollGameList from "../components/ScrollGameList";
-import Banner from "../components/Banner";
+import { gameIcon, categoryIcon } from "@/components/Icons";
+import Layout from "@/components/Layout";
+import { SITE_META, ADSENSE_ID } from "@/lib/constants";
+import { getGames, getCategories } from "@/lib/api";
+import CategoryList from "@/components/CategoryList";
+import ScrollGameList from "@/components/ScrollGameList";
+import Banner from "@/components/Banner";
 import Script from "next/script";
 
 export default function AllGames({
@@ -41,11 +41,7 @@ export default function AllGames({
             init="36"
             step="12"
           />
-          <CategoryList
-            icon={categoryIcon()}
-            title="Categories"
-            categories={categories}
-          />
+          <CategoryList icon={categoryIcon()} title="Categories" categories={categories} />
         </main>
       </Layout>
     </>

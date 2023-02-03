@@ -4,7 +4,7 @@ import useCurrentData from "../../data/CurrentData";
 import dayjs from "dayjs";
 import { getStars, toSlug, toTitle } from "../../utils/generator";
 import { GAME_PATH, LANDSCAPE_GAMES, RE_CATEGORY } from "../../lib/constants";
-import Image from "next/future/image";
+import Image from "next/image";
 
 export default function Editor({ data }) {
   function ShowCurrentData() {
@@ -51,9 +51,7 @@ export default function Editor({ data }) {
 
     let tmpData = data.gamelist.slice();
 
-    tmpData.find(
-      (item) => item.name.toLowerCase() == `sharkiscoming`
-    ).name = `SharkIsComing`;
+    tmpData.find((item) => item.name.toLowerCase() == `sharkiscoming`).name = `SharkIsComing`;
 
     RE_CATEGORY.map((cat) => {
       for (const [key, value] of Object.entries(cat)) {
@@ -81,9 +79,7 @@ export default function Editor({ data }) {
       game.game_url = `${GAME_PATH}${item.name}`;
       game.icon_url = `https://cdn.iwantalipstick.com/gameicon2/png/${item.name}.png`;
       game.description = item.description.trim();
-      game.oritention = LANDSCAPE_GAMES.includes(item.name)
-        ? `landscape`
-        : `portrait`;
+      game.oritention = LANDSCAPE_GAMES.includes(item.name) ? `landscape` : `portrait`;
       // game.tags = null;
       // game.status = `draft`;
       game.rating = getStars() - 0;
@@ -116,9 +112,7 @@ export default function Editor({ data }) {
         <Head>
           <title>Editor</title>
         </Head>
-        <div className="my-4">
-          源数据 / Original Data: {data.gamelist.length}
-        </div>
+        <div className="my-4">源数据 / Original Data: {data.gamelist.length}</div>
         <div className="relative grid grid-cols-2 gap-6">
           <div className="overflow-auto border-4 border-slate-100">
             <table className="w-full table-auto text-xs leading-8">
@@ -136,9 +130,7 @@ export default function Editor({ data }) {
               </thead>
               <tbody className="">
                 {data.gamelist
-                  .sort((a, b) =>
-                    new Date(a.time) < new Date(b.time) ? 1 : -1
-                  )
+                  .sort((a, b) => (new Date(a.time) < new Date(b.time) ? 1 : -1))
                   .map((game, index) => (
                     <tr key={game.id}>
                       <td>
@@ -152,7 +144,6 @@ export default function Editor({ data }) {
                           alt={game.name}
                           width={40}
                           height={40}
-                          layout={`responsive`}
                         />
                       </td>
                       <td>{game.name}</td>
@@ -164,11 +155,7 @@ export default function Editor({ data }) {
                           <span className="text-red-500">{game.category}</span>
                         )}
                       </td>
-                      <td>
-                        {dayjs(new Date(game.time)).format(
-                          "MMM DD, YYYY hh:mm"
-                        )}
-                      </td>
+                      <td>{dayjs(new Date(game.time)).format("MMM DD, YYYY hh:mm")}</td>
                     </tr>
                   ))}
               </tbody>
@@ -199,12 +186,7 @@ export default function Editor({ data }) {
         <h2>Fetch source data</h2>
         <div className="flex items-center gap-3">
           <lable>URL: </lable>
-          <input
-            className="w-1/2 border p-2"
-            type="text"
-            name="dataUrl"
-            id="dataUrl"
-          />
+          <input className="w-1/2 border p-2" type="text" name="dataUrl" id="dataUrl" />
           <button className="bg-blue-600 p-2 text-white">Fetch</button>
         </div>
         <ShowCurrentData />
