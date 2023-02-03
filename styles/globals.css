@@ -67,7 +67,7 @@ body {
 
 /* Game List */
 .game-list {
-  @apply grid gap-4 p-2 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-8 xl:gap-6 xl:py-4 xl:px-8 2xl:grid-cols-12;
+  @apply grid gap-4 p-4 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-8 xl:gap-6 xl:py-4 xl:px-8 2xl:grid-cols-12;
 }
 .list-item {
   @apply xl:transition xl:duration-500 xl:ease-in-out xl:hover:scale-125;

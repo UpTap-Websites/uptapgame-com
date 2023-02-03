@@ -41,6 +41,7 @@ export default function GamesListByCategory({ games, categories }) {
           <h1>
             {categoryName} {games.length > 1 ? `Games` : `Game`} ({games.length})
           </h1>
+
           <GameList cols="4" games={games} />
         </main>
       </Layout>
