@@ -13,13 +13,14 @@ export default function GamesListByCategory({ games, categories }) {
   const { slug } = router.query;
   // console.log(router.query);
   // console.log({ slug });
-  const categoryName =
-    slug.toLowerCase() == ".io"
-      ? ".IO"
-      : slug
-          .toString()
-          .replace(/^\S/, (s) => s.toUpperCase())
-          .replace(/-/g, " ");
+  // const categoryName =
+  //   slug.toLowerCase() == ".io"
+  //     ? ".IO"
+  //     : slug
+  //         .toString()
+  //         .replace(/^\S/, (s) => s.toUpperCase())
+  //         .replace(/-/g, " ");
+  const categoryName = games[0].category;
   // console.log(categoryName);
   return (
     <>
