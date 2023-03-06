@@ -14,8 +14,8 @@ export default function GamesListByCategory({ games, categories }) {
   // console.log(router.query);
   // console.log({ slug });
   const categoryName =
-    slug.toLowerCase() == "io"
-      ? "IO"
+    slug.toLowerCase() == ".io"
+      ? ".IO"
       : slug
           .toString()
           .replace(/^\S/, (s) => s.toUpperCase())
@@ -50,7 +50,9 @@ export default function GamesListByCategory({ games, categories }) {
 }
 
 export async function getStaticProps(context) {
-  const _games = await getGamesByCategory(`${context.params.slug.replace(/-/, " ")}`);
+  const _games = await getGamesByCategory(
+    `${context.params.slug.replace(/-/, " ").replace(/\./, "")}`
+  );
   const categories = await getCategories();
   let games = [];
   _games.map((item) => {
@@ -75,7 +77,7 @@ export const getStaticPaths = async () => {
   const categories = await getCategories();
   const paths = categories.map((category) => ({
     params: {
-      slug: category.replace(/ /, "-"),
+      slug: category.replace(/ /, "-").replace(/\./, ""),
     },
   }));
   return {

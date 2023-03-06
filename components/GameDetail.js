@@ -24,7 +24,7 @@ export default function GameDetail({ game }) {
           </h1>
           <p>
             <Link
-              href={`/category/${game.category.replace(/ /, "-")}`}
+              href={`/category/${game.category.toLowerCase().replace(/\./, "").replace(/ /, "-")}`}
               className="rounded-md bg-slate-600/80 py-1 px-2 text-xs text-slate-100/60 shadow-md shadow-slate-900/30"
             >
               {game.category.replace(/^\S/, (s) => s.toUpperCase())}

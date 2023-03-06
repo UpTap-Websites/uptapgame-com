@@ -58,8 +58,9 @@ export default function Navbar({ list, isOpen }) {
             </li>
             {list.sort().map((category) => (
               <li className={`${category == current.slug ? `current` : `normal`}`} key={category}>
-                <Link href={`/category/${category.replace(/ /, "-")}`}>
-                  {category.toLowerCase() == "io" ? "IO" : category}
+                <Link href={`/category/${category.replace(/ /, "-").replace(/\./, "")}`}>
+                  {category.toLowerCase() == ".io" ? ".IO" : category}
+                  {/* {category} */}
                 </Link>
               </li>
             ))}
