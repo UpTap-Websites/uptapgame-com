@@ -8,8 +8,8 @@ export default function GameListItem({ item }) {
     <>
       {item && (
         <li>
-          <Link className={isRecommended(item.gid) ? `hot` : ``} href={`/game/${item.slug}`}>
-            <Image src={getIconUrl(item.gid)} alt={item.title} width={200} height={200} />
+          <Link className={isRecommended(item.appid) ? `hot` : ``} href={`/game/${item.slug}/`}>
+            <Image src={getIconUrl(item.appid)} alt={item.title} width={200} height={200} />
             <span>{item.title}</span>
           </Link>
         </li>

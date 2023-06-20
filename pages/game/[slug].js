@@ -5,13 +5,18 @@ import getGameUrl from "@/utils/getGameUrl";
 import Image from "next/image";
 import Link from "next/link";
 import AdSense from "@/components/AdSense";
-import { ADS_SLOT_ID } from "@/lib/constants";
+import { ADS_SLOT_ID, SITE_META } from "@/lib/constants";
 import AdScript from "@/components/AdScript";
+import Head from "next/head";
 
 export default function Game({ game, related }) {
   console.log(`Game data:`, game);
   return (
     <>
+      <Head>
+        <title>{`Play ${game.title} on ${SITE_META.NAME}`}</title>
+        <link rel="canonical" href={`${SITE_META.URL}/game/${game.slug}/`} />
+      </Head>
       <AdScript />
       <main className="site-main detail">
         <section>
@@ -22,7 +27,7 @@ export default function Game({ game, related }) {
             <div className="meta">
               <Image
                 className="thumbnail"
-                src={getIconUrl(game.gid)}
+                src={getIconUrl(game.appid)}
                 width={200}
                 height={200}
                 alt={game.title}
@@ -39,7 +44,7 @@ export default function Game({ game, related }) {
             <div>
               <a
                 className="play-btn"
-                href={getGameUrl(game.gid)}
+                href={getGameUrl(game.appid)}
                 target="_blank"
                 title={`Play ${game.title} Now`}
               >
@@ -84,7 +89,7 @@ export async function getStaticProps(ctx) {
 
 export async function getStaticPaths() {
   const data = await getAllGames();
-  const paths = data.map((item) => {
+  const paths = data.games.map((item) => {
     return { params: { slug: item.slug } };
   });
   return {

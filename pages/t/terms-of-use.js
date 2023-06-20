@@ -10,6 +10,7 @@ export default function TermsOfUse() {
       <main className="site-main page">
         <Head>
           <title>{`Terms of Use | ${SITE_META.NAME}`}</title>
+          <link rel="canonical" href={`${SITE_META.URL}/t/terms-of-use/`} />
         </Head>
         <h1>Terms of Use</h1>
         <div className="content" dangerouslySetInnerHTML={{ __html: content }} />

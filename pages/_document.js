@@ -5,6 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta name="generator" content={new Date().toISOString()} />
+        <link rel="shortcut icon" href="/images/favicon.svg" sizes="128x128" />
       </Head>
       <body>
         <Main />

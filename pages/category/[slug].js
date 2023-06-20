@@ -1,10 +1,15 @@
 import GameList from "@/components/GameList";
 import { getAllCategories, getGamesByCategory } from "@/lib/api";
-
+import { SITE_META } from "@/lib/constants";
+import Head from "next/head";
 export default function Category({ data }) {
   console.log(`Category data:`, data);
   return (
     <>
+      <Head>
+        <title>{`${data.categories?.[0].name} Games | ${SITE_META.NAME}`}</title>
+        <link rel="canonical" href={`${SITE_META.URL}/category/${data.categories?.[0].slug}/`} />
+      </Head>
       <main class="site-main list">
         <section>
           <div class="section-head">

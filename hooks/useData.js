@@ -29,7 +29,7 @@ export default function useCurrentData(limit) {
       games (filter: { status: { _eq: "published" } }, limit: $limit) {
         title
         slug
-        gid
+        appid
         category { name }
       }
     }`;

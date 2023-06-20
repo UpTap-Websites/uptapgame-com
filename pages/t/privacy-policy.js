@@ -10,6 +10,7 @@ export default function PrivacyPolicy() {
       <main className="site-main page">
         <Head>
           <title>{`Privacy Policy | ${SITE_META.NAME}`}</title>
+          <link rel="canonical" href={`${SITE_META.URL}/t/privacy-policy/`} />
         </Head>
         <h1>Privacy Policy</h1>
         <div className="content" dangerouslySetInnerHTML={{ __html: content }}></div>
