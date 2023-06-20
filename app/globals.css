@@ -1,0 +1,232 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
+    rgb(var(--background-start-rgb));
+} */
+
+html,
+body {
+  @apply bg-slate-50 text-slate-800;
+}
+
+.wrapper {
+  @apply flex min-h-screen flex-col text-sm;
+}
+.site-main {
+  @apply mt-14 grid grow xl:mx-10 xl:mt-0;
+}
+.section-head {
+  @apply flex items-center;
+}
+.game-list {
+  @apply grid grid-cols-3 gap-3;
+}
+.game-list a {
+  @apply relative flex flex-col gap-2 font-bold xl:transform xl:duration-500 xl:ease-in-out xl:hover:z-10 xl:hover:origin-center xl:hover:scale-125;
+}
+
+.site-main img {
+  @apply rounded-xl;
+}
+.section-head,
+.game-list {
+  @apply mx-4 xl:mx-0;
+}
+.game-list span {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  @apply h-8 overflow-hidden text-center text-xs;
+}
+.hot {
+  @apply relative overflow-hidden;
+}
+.hot::before {
+  @apply absolute left-0 top-1 -translate-x-5 -rotate-45 bg-red-500 px-6 py-1.5 text-xs text-white shadow content-["HOT"];
+}
+/* Header */
+.site-header {
+  @apply fixed inset-x-0 z-20 min-h-[3rem] border-b bg-slate-50 pt-3 xl:static xl:mb-6 xl:flex xl:items-center xl:gap-4 xl:rounded-full xl:border-b-0;
+}
+
+.site-branding {
+  @apply absolute left-3 xl:flex xl:h-20 xl:w-20 xl:transform xl:items-center xl:justify-center xl:rounded-full xl:bg-gradient-to-br xl:from-slate-200 xl:to-slate-300/80 xl:duration-500 xl:ease-in-out xl:hover:scale-105 xl:hover:from-slate-200/90 xl:hover:to-slate-200/90;
+}
+/* Menu / Nav */
+.menu-btn {
+  @apply absolute right-3 xl:hidden;
+}
+.nav-list {
+  @apply m-3 mt-10 grid-cols-3 gap-2 rounded-3xl bg-slate-800 p-3 xl:ml-7 xl:mt-3 xl:flex xl:gap-4 xl:pl-24 xl:shadow-lg;
+}
+
+.nav-list a {
+  @apply block rounded-xl border-2 border-slate-700 p-2 text-center text-slate-400 xl:transform xl:border-transparent xl:duration-500 xl:hover:bg-slate-700 xl:hover:text-slate-50;
+}
+
+.nav-list .current {
+  @apply border-slate-500 bg-slate-700 text-slate-50;
+}
+
+/* Search */
+.search-btn {
+  @apply absolute right-14 top-3 xl:right-10 xl:top-10 xl:transform xl:duration-500 xl:hover:scale-110;
+}
+
+.search-panel-mask {
+  @apply fixed inset-0 bg-gray-500/75;
+}
+/* home */
+.home {
+  @apply xl:grid-cols-4 xl:gap-x-12 xl:gap-y-6;
+}
+
+.home .section-head {
+  @apply flex items-center justify-between;
+}
+.home .title {
+  @apply flex items-center gap-2;
+}
+.home .title h2 {
+  @apply my-3 text-xl font-bold;
+}
+.home .title span {
+  @apply rounded-lg bg-slate-200 px-1.5 py-1 text-slate-600;
+}
+.link-more {
+  @apply p-1 text-xs font-bold uppercase;
+}
+.home .game-list {
+  @apply grid grid-cols-3 gap-3;
+}
+/* list */
+.list .game-list {
+  @apply xl:grid-cols-12;
+}
+.list .section-head {
+  @apply mb-6 flex-col justify-center gap-2;
+}
+
+.list .section-head h1 {
+  @apply my-3 text-xl font-bold xl:text-3xl;
+}
+
+/* detail */
+
+.detail section {
+  @apply xl:flex xl:gap-6;
+}
+.detail .meta {
+  @apply m-4 rounded-[2rem] border-4 border-slate-300 bg-white p-4 xl:overflow-hidden xl:p-8;
+}
+.detail .thumbnail {
+  @apply float-left mr-4 h-28 w-28 xl:h-auto xl:w-auto;
+}
+.detail h1 {
+  @apply my-3 text-xl font-bold xl:text-3xl;
+}
+.detail .category {
+  @apply rounded-md bg-slate-600 px-1.5 py-1 text-xs uppercase text-slate-300;
+}
+.detail .play-btn {
+  @apply mx-8 my-6 block rounded-full bg-orange-500 p-4 text-center text-xl font-semibold text-white shadow-lg shadow-orange-400/40 xl:mx-auto xl:w-96 xl:transform xl:duration-500 xl:hover:scale-110;
+}
+.detail aside .game-list {
+  @apply mb-4 grid-cols-3;
+}
+
+.description {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  @apply clear-left overflow-hidden text-ellipsis pt-4 text-xs xl:clear-none xl:max-w-5xl xl:text-sm;
+}
+.popular h2 {
+  @apply my-3 font-bold xl:text-xl;
+}
+.popular .game-list {
+  @apply grid-cols-4 xl:grid-cols-8;
+}
+
+.description.show-all {
+  -webkit-box-orient: inherit;
+}
+
+/* Site Footer */
+.site-footer {
+  @apply mt-4 bg-slate-600 text-center text-xs text-slate-400;
+}
+
+.site-footer nav {
+  @apply flex justify-center gap-6 bg-slate-700 p-3;
+}
+
+.site-footer .logo {
+  @apply mx-auto mb-2 mt-6 w-44;
+}
+
+.site-footer p {
+  @apply mb-10;
+}
+/* banner */
+.banner {
+  @apply mx-auto my-6 flex h-[250px] w-[300px] items-center justify-center bg-slate-200 text-2xl text-slate-400 xl:h-[280px] xl:w-[360px];
+}
+/* Search */
+
+.search-panel {
+  @apply fixed inset-0 top-0 z-50 overflow-y-auto p-4 pt-[25vh];
+}
+.search-container {
+  @apply relative mx-auto max-w-xl divide-y overflow-hidden rounded-xl bg-white text-gray-800 placeholder-gray-400 shadow-2xl ring-1 ring-black/5;
+}
+.search-input {
+  @apply w-full border-0 bg-transparent p-4 focus:border-0 focus:outline-none focus:ring-0;
+}
+.search-result {
+  @apply max-h-96 overflow-y-auto py-4 text-sm;
+}
+
+/* Page */
+.page .section-head {
+  @apply mb-6 flex-col justify-center gap-2;
+}
+
+.page h1 {
+  @apply my-3 text-center text-xl font-bold xl:text-3xl;
+}
+.page .content {
+  @apply m-4;
+}
+.page ul,
+.page p {
+  @apply my-2;
+}
+.page a {
+  @apply underline decoration-dotted underline-offset-4;
+}
+.page ul {
+  @apply ml-6 list-outside list-disc;
+}
+
+.page h2 {
+  @apply my-3 font-bold;
+}
