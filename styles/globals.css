@@ -4,11 +4,11 @@
 
 html,
 body {
-  @apply bg-slate-50 text-slate-800;
+  @apply bg-slate-600 text-slate-800;
 }
 
 .wrapper {
-  @apply flex min-h-screen flex-col text-sm relative;
+  @apply flex min-h-screen flex-col text-sm relative bg-slate-50;
 }
 .site-main {
   @apply mt-14 grid grow xl:mx-10 xl:mt-0;

@@ -10,7 +10,7 @@ import Script from "next/script";
 import NProgress from "nprogress";
 import { useEffect } from "react";
 
-export default function App({ Component, pageProps, navItems }) {
+export default function App({ Component, pageProps }) {
   const Router = useRouter();
 
   useEffect(() => {

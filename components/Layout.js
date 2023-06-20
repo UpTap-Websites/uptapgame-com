@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 import ScrollTopButton from "./ScrollTopButton";
 const nunito = Nunito({ subsets: ["latin"] });
 
-export default function Layout({ children, navItems }) {
+export default function Layout({ children }) {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function Layout({ children, navItems }) {
   return (
     <>
       <div className={"wrapper " + nunito.className}>
-        <Header navItems={navItems} />
+        <Header />
         {children}
         <Footer />
         <ScrollTopButton showScrollTop={showScrollTop} scrollToTop={scrollToTop} />

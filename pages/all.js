@@ -11,9 +11,9 @@ export default function AllGames({ data }) {
         <title>{`All Games | ${SITE_META.NAME}`}</title>
         <link rel="canonical" href={`${SITE_META.URL}/all/`} />
       </Head>
-      <main class="site-main list">
+      <main className="site-main list">
         <section>
-          <div class="section-head">
+          <div className="section-head">
             <h1>All Games</h1>
             <span>{`(${data.total?.[0].countDistinct.appid})`}</span>
           </div>

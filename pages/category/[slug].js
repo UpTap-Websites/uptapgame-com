@@ -10,9 +10,9 @@ export default function Category({ data }) {
         <title>{`${data.categories?.[0].name} Games | ${SITE_META.NAME}`}</title>
         <link rel="canonical" href={`${SITE_META.URL}/category/${data.categories?.[0].slug}/`} />
       </Head>
-      <main class="site-main list">
+      <main className="site-main list">
         <section>
-          <div class="section-head">
+          <div className="section-head">
             <h1>{`${data.categories?.[0].name} Games`}</h1>
 
             <p className="max-w-3xl">{data.categories?.[0].description}</p>
