@@ -13,18 +13,18 @@ export default function SearchPanel({ isShow, updateState }) {
   const [isOpen, setIsOpen] = useState(isShow); // 控制显示
   const [query, setQuery] = useState("");
 
-  const searchData = useCurrentData();
-  console.log(
-    `searchData: `,
-    JSON.stringify(
-      searchData?.data
-        ?.map(
-          (i) =>
-            `/${i.appid.toLowerCase()} /${i.slug}/ 301\n/${i.appid.toLowerCase()}/ /${i.slug}/ 301`
-        )
-        .join(`\n`)
-    )
-  );
+  // const searchData = useCurrentData();
+  // console.log(
+  //   `searchData: `,
+  //   JSON.stringify(
+  //     searchData?.data
+  //       ?.map(
+  //         (i) =>
+  //           `/${i.appid.toLowerCase()} /${i.slug}/ 301\n/${i.appid.toLowerCase()}/ /${i.slug}/ 301`
+  //       )
+  //       .join(`\n`)
+  //   )
+  // );
 
   function handleClick() {
     updateState(!isOpen);
@@ -48,9 +48,7 @@ export default function SearchPanel({ isShow, updateState }) {
   // let categories = data.categories.map((i) => i.toLowerCase());
 
   const filteredGames = query
-    ? //
-      names &&
-      names?.data
+    ? names?.data
         ?.filter((i) => i.appid.toLowerCase().includes(query.toLowerCase()))
         .sort((a, b) => (a.appid < b.appid ? 1 : -1))
         .sort((a, b) =>
@@ -125,7 +123,7 @@ export default function SearchPanel({ isShow, updateState }) {
             </div>
             {filteredGames?.length > 0 && (
               <Combobox.Options static className="max-h-96 overflow-y-auto py-4 text-sm">
-                {filteredGames.map((game) => (
+                {filteredGames?.map((game) => (
                   <Combobox.Option key={game.appid} value={game.slug}>
                     {({ active }) => (
                       <div

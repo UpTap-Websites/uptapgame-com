@@ -5,7 +5,7 @@ const fetcher = async (url, query, { variables }) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TEST_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
     },
     body: JSON.stringify({
       query,
@@ -22,11 +22,11 @@ const fetcher = async (url, query, { variables }) => {
 };
 
 export default function useCurrentData(limit) {
-  const url = `${process.env.NEXT_PUBLIC_API_TEST_URL}/graphql`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
 
   const query = `
     query ($limit: Int) {
-      games (filter: { status: { _eq: "published" } }, limit: $limit) {
+      games: Games (filter: { status: { _eq: "published" } }, limit: $limit) {
         title
         slug
         appid

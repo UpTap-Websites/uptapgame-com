@@ -9,7 +9,7 @@ import AdScript from "@/components/AdScript";
 import Head from "next/head";
 
 export default function Home({ data }) {
-  console.log(`Home data:`, data);
+  // console.log(`Home data:`, data);
   return (
     <>
       <Head>
