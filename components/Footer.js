@@ -10,7 +10,7 @@ export default function Footer() {
         <Link href={`/t/terms-of-use/`}>Terms of Use</Link>
       </nav>
       <Image className="logo" src={Logo} alt="Logo" />
-      <p>Copyright © 2023 UpTapGame. All Rights Reserved</p>
+      <p>{`Copyright © ${new Date().getFullYear()} UpTapGame. All Rights Reserved`}</p>
     </footer>
   );
 }
