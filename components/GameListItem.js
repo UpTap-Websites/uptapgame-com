@@ -8,7 +8,11 @@ export default function GameListItem({ item }) {
     <>
       {item && (
         <li>
-          <Link className={isRecommended(item.appid) ? `hot` : ``} href={`/game/${item.slug}/`}>
+          <Link
+            className={isRecommended(item.appid) ? `hot` : ``}
+            href={`/game/${item.slug}/`}
+            title={item.title}
+          >
             <Image src={getIconUrl(item.appid)} alt={item.title} width={200} height={200} />
             <span>{item.title}</span>
           </Link>

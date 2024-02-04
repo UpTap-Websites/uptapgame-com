@@ -10,6 +10,14 @@ export default function AdSense({ style, className, slot, format, responsive, la
       } catch (e) {
         console.error(e.message);
       }
+    // return () => {
+    //   // 清除广告
+    //   let ads = document.querySelectorAll(".adsbygoogle");
+    //   for (let ad of ads) {
+    //     // 如果广告内容不为空则清空
+    //     if (ad.innerHTML) ad.innerHTML = "";
+    //   }
+    // };
   }, []);
   if (SHOW_AD)
     return (

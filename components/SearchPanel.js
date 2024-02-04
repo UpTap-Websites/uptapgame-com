@@ -4,7 +4,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { Fragment, useState } from "react";
 
-import useCurrentData from "@/hooks/useData";
+// import useCurrentData from "@/hooks/useData";
+
+import useGameData from "@/hooks/useGameData";
 
 import getIconUrl from "@/utils/getIconUrl";
 
@@ -31,7 +33,8 @@ export default function SearchPanel({ isShow, updateState }) {
   }
 
   // let names = data;
-  const names = useCurrentData();
+  // const names = useCurrentData();
+  const names = useGameData();
   // console.log(`tmp: `, tmp);
 
   // let names = repairData(tmp);
@@ -140,9 +143,6 @@ export default function SearchPanel({ isShow, updateState }) {
                         />
                         <span className={`font-medium  ${active ? `text-white` : `text-gray-900`}`}>
                           {game.title}
-                        </span>
-                        <span className={active ? "text-indigo-200" : "text-gray-400"}>
-                          in {game.category.name}
                         </span>
                       </div>
                     )}
