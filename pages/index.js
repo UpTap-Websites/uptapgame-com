@@ -42,7 +42,7 @@ export default function Home({ data }) {
                     </ul>
                     {index === 0 || index === 2 ? (
                       <div className="banner my-4">
-                        <AdSense slot={ADS_SLOT_ID.HOME} key={Math.random()} />
+                        <AdSense slot={ADS_SLOT_ID.HOME} />
                       </div>
                     ) : null}
                   </section>

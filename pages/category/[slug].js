@@ -14,7 +14,6 @@ export default function Category({ data }) {
         <section>
           <div className="section-head">
             <h1>{`${data.categories?.[0].name} Games`}</h1>
-
             <p className="max-w-3xl">{data.categories?.[0].description}</p>
           </div>
           <GameList items={data.games} />

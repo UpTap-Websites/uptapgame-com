@@ -22,7 +22,7 @@ export default function Game({ game, related }) {
         <section>
           <div className="order-2 grow">
             <div className="banner xl:hidden">
-              <AdSense slot={ADS_SLOT_ID.DETAIL} key={Math.random()} />
+              <AdSense slot={ADS_SLOT_ID.DETAIL} />
             </div>
             <div className="meta">
               <Image

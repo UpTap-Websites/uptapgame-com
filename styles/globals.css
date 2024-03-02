@@ -17,10 +17,10 @@ body {
   @apply flex items-center;
 }
 .game-list {
-  @apply grid grid-cols-3 gap-3;
+  @apply grid grid-cols-3 md:grid-cols-4 gap-3;
 }
 .game-list a {
-  @apply relative flex flex-col gap-2 font-bold xl:transform xl:duration-500 xl:ease-in-out xl:hover:z-10 xl:hover:origin-center xl:hover:scale-125;
+  @apply relative flex flex-col items-center gap-2 font-bold xl:transform xl:duration-500 xl:ease-in-out xl:hover:z-10 xl:hover:origin-center xl:hover:scale-125;
 }
 
 .site-main img {
@@ -95,7 +95,7 @@ body {
   @apply p-1 text-xs font-bold uppercase;
 }
 .home .game-list {
-  @apply grid grid-cols-3 gap-3;
+  @apply grid grid-cols-3 md:grid-cols-4 gap-3;
 }
 /* list */
 .list .game-list {
