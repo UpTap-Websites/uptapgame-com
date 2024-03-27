@@ -1,48 +1,20 @@
 import useSWR from "swr";
 
-const fetcher = async (url, query, { variables }) => {
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TEST_TOKEN}`,
-    },
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
-  });
+const fetcher = (url) => fetch(url).then((r) => r.json());
 
-  const { errors, data } = await res.json();
-  if (errors) {
-    console.error(errors);
-  }
+export default function useGameData() {
+  // const url = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
+  const url = `${process.env.NEXT_PUBLIC_API_V2_URL}/items/game?fields=appid,title,slug,category.name,category.slug&limit=-1&filter[status][_eq]=published`;
 
-  return data.games;
-};
+  const { data, error, isLoading } = useSWR(url, fetcher);
 
-export default function useCurrentData(limit) {
-  const url = `${process.env.NEXT_PUBLIC_API_TEST_URL}/graphql`;
+  const games = data?.data;
 
-  const query = `
-    query ($limit: Int) {
-      games (filter: { status: { _eq: "published" } }, limit: $limit) {
-        title
-        slug
-        gid
-        category { name }
-      }
-    }`;
-
-  const variables = { limit: limit || -1 };
-
-  const { data, error } = useSWR(url, () => fetcher(url, query, { variables }));
-
-  // title, appid, slug, category.name
+  // console.log(`games: `, games);
 
   return {
-    data,
-    isLoading: !error && !data,
+    data: games,
+    isLoading,
     isError: error,
   };
 }

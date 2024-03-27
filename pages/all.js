@@ -9,7 +9,7 @@ export default function AllGames({ data }) {
         <section>
           <div class="section-head">
             <h1>All Games</h1>
-            <span>{`(${data.total?.[0].countDistinct.gid})`}</span>
+            <span>{`(${data.total?.[0].countDistinct.appid})`}</span>
           </div>
           <GameList items={data.games} />
         </section>

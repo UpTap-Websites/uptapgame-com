@@ -1,5 +1,5 @@
 import GameList from "@/components/GameList";
-import { getAllGames, getGameAndRelatedGamesBySlug } from "@/lib/api";
+import { getAllGamesWithSlug, getGameAndRelatedGamesBySlug } from "@/lib/api";
 import getIconUrl from "@/utils/getIconUrl";
 import getGameUrl from "@/utils/getGameUrl";
 import Image from "next/image";
@@ -22,7 +22,7 @@ export default function Game({ game, related }) {
             <div className="meta">
               <Image
                 className="thumbnail"
-                src={getIconUrl(game.gid)}
+                src={getIconUrl(game.appid)}
                 width={200}
                 height={200}
                 alt={game.title}
@@ -39,7 +39,7 @@ export default function Game({ game, related }) {
             <div>
               <a
                 className="play-btn"
-                href={getGameUrl(game.gid)}
+                href={getGameUrl(game.appid)}
                 target="_blank"
                 title={`Play ${game.title} Now`}
               >
@@ -83,7 +83,7 @@ export async function getStaticProps(ctx) {
 }
 
 export async function getStaticPaths() {
-  const data = await getAllGames();
+  const data = await getAllGamesWithSlug();
   const paths = data.map((item) => {
     return { params: { slug: item.slug } };
   });

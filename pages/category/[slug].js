@@ -8,7 +8,7 @@ export default function Category({ data }) {
       <main class="site-main list">
         <section>
           <div class="section-head">
-            <h1>{`${data.categories?.[0].name} Games`}</h1>
+            <h1>{`${data.category?.[0].name} Games`}</h1>
 
             <p className="max-w-3xl">{data.categories?.[0].description}</p>
           </div>

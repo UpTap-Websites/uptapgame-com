@@ -19,7 +19,8 @@ export default function SearchPanel({ isShow, updateState }) {
     JSON.stringify(
       searchData?.data
         ?.map(
-          (i) => `/${i.gid.toLowerCase()} /${i.slug}/ 301\n/${i.gid.toLowerCase()}/ /${i.slug}/ 301`
+          (i) =>
+            `/${i.appid.toLowerCase()} /${i.slug}/ 301\n/${i.appid.toLowerCase()}/ /${i.slug}/ 301`
         )
         .join(`\n`)
     )
@@ -50,11 +51,11 @@ export default function SearchPanel({ isShow, updateState }) {
     ? //
       names &&
       names?.data
-        ?.filter((i) => i.gid.toLowerCase().includes(query.toLowerCase()))
-        .sort((a, b) => (a.gid < b.gid ? 1 : -1))
+        ?.filter((i) => i.appid.toLowerCase().includes(query.toLowerCase()))
+        .sort((a, b) => (a.appid < b.appid ? 1 : -1))
         .sort((a, b) =>
-          a.gid.toLowerCase().indexOf(query.toLowerCase()) >
-          b.gid.toLowerCase().indexOf(query.toLowerCase())
+          a.appid.toLowerCase().indexOf(query.toLowerCase()) >
+          b.appid.toLowerCase().indexOf(query.toLowerCase())
             ? 1
             : -1
         )
@@ -125,7 +126,7 @@ export default function SearchPanel({ isShow, updateState }) {
             {filteredGames?.length > 0 && (
               <Combobox.Options static className="max-h-96 overflow-y-auto py-4 text-sm">
                 {filteredGames.map((game) => (
-                  <Combobox.Option key={game.gid} value={game.slug}>
+                  <Combobox.Option key={game.appid} value={game.slug}>
                     {({ active }) => (
                       <div
                         className={`flex items-center space-x-1 px-4 py-2 ${
@@ -134,7 +135,7 @@ export default function SearchPanel({ isShow, updateState }) {
                       >
                         <Image
                           className="mr-2 rounded-md"
-                          src={getIconUrl(game.gid)}
+                          src={getIconUrl(game.appid)}
                           width={30}
                           height={30}
                           alt={``}
@@ -151,7 +152,7 @@ export default function SearchPanel({ isShow, updateState }) {
                 ))}
               </Combobox.Options>
             )}
-            {query && filteredGames.length === 0 && (
+            {query && filteredGames && filteredGames.length === 0 && (
               <p className="p-4 text-sm text-gray-500">No results found.</p>
             )}
           </Combobox>
