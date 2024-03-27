@@ -4,6 +4,7 @@ import { GA_ID } from "@/lib/constants";
 import * as gtag from "@/lib/gtag";
 import "@/styles/globals.css";
 import "@/styles/nprogress.css";
+import Head from "next/head";
 
 import { useRouter } from "next/router";
 import Script from "next/script";
@@ -57,7 +58,10 @@ export default function App({ Component, pageProps }) {
           `,
         }}
       />
-
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="manifest" href="/manifest.json" />
+      </Head>
       <Component {...pageProps} />
     </Layout>
   );

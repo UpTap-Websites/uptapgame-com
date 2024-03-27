@@ -4,9 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { Fragment, useState } from "react";
 
-import useCurrentData from "@/hooks/useData";
-
-import useGameData from "@/hooks/useGameData";
+import useCurrentData from "@/hooks/useGameData";
 
 import getIconUrl from "@/utils/getIconUrl";
 
